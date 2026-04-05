@@ -1,0 +1,677 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>¡Feliz Cumpleaños Monse! 🎉</title>
+<link href="https://fonts.googleapis.com/css2?family=Bebas+Neue&family=Nunito:wght@400;700;900&display=swap" rel="stylesheet">
+<style>
+  :root {
+    --amarillo: #FFD93D;
+    --naranja: #FF6B35;
+    --verde: #6BCB77;
+    --azul: #4D96FF;
+    --lila: #C77DFF;
+    --fondo: #FFF8F0;
+    --oscuro: #1a1a2e;
+    --texto: #2d2d2d;
+  }
+  * { margin: 0; padding: 0; box-sizing: border-box; }
+  body { font-family: 'Nunito', sans-serif; background: var(--fondo); color: var(--texto); overflow-x: hidden; cursor: none; }
+
+  .cursor { width: 20px; height: 20px; background: var(--naranja); border-radius: 50%; position: fixed; pointer-events: none; z-index: 9999; transform: translate(-50%, -50%); mix-blend-mode: multiply; }
+
+  #btn-musica { position: fixed; top: 16px; right: 16px; z-index: 1000; background: var(--oscuro); color: white; border: none; border-radius: 50px; padding: 10px 18px; font-family: 'Nunito', sans-serif; font-weight: 700; font-size: 14px; cursor: pointer; display: flex; align-items: center; gap: 6px; box-shadow: 4px 4px 0 var(--naranja); transition: transform 0.1s, box-shadow 0.1s; }
+  #btn-musica:hover { transform: translate(-2px,-2px); box-shadow: 6px 6px 0 var(--naranja); }
+
+  #confeti-canvas { position: fixed; top: 0; left: 0; width: 100%; height: 100%; pointer-events: none; z-index: 500; }
+
+  .nav-dots { position: fixed; right: 16px; top: 50%; transform: translateY(-50%); z-index: 100; display: flex; flex-direction: column; gap: 10px; }
+  .dot { width: 12px; height: 12px; border-radius: 50%; background: #ccc; cursor: pointer; transition: background 0.3s, transform 0.3s; border: 2px solid white; box-shadow: 0 0 0 1px #ccc; }
+  .dot.active { background: var(--naranja); transform: scale(1.3); }
+
+  section { min-height: 100vh; display: flex; flex-direction: column; justify-content: center; align-items: center; padding: 80px 20px 60px; position: relative; }
+
+  .nav-btns { display: flex; gap: 12px; margin-top: 32px; flex-wrap: wrap; justify-content: center; }
+  .btn-nav { padding: 14px 28px; font-family: 'Nunito', sans-serif; font-weight: 900; font-size: 16px; border: none; border-radius: 6px; cursor: pointer; transition: transform 0.1s, box-shadow 0.1s; letter-spacing: 0.5px; }
+  .btn-prev { background: white; color: var(--oscuro); box-shadow: 4px 4px 0 #ccc; }
+  .btn-prev:hover { transform: translate(-2px,-2px); box-shadow: 6px 6px 0 #bbb; }
+  .btn-next { background: var(--amarillo); color: var(--oscuro); box-shadow: 6px 6px 0 var(--naranja); }
+  .btn-next:hover { transform: translate(-3px,-3px); box-shadow: 9px 9px 0 var(--naranja); }
+
+  /* PORTADA */
+  #s0 { background: var(--oscuro); overflow: hidden; }
+  .fondo-sticker { position: absolute; inset: 0; display: grid; grid-template-columns: repeat(8, 1fr); grid-template-rows: repeat(6, 1fr); opacity: 0.07; font-size: 40px; overflow: hidden; }
+  .fondo-sticker span { display: flex; align-items: center; justify-content: center; }
+  .portada-content { position: relative; z-index: 2; text-align: center; }
+  .tag-arriba { display: inline-block; background: var(--amarillo); color: var(--oscuro); font-weight: 900; font-size: 13px; letter-spacing: 3px; text-transform: uppercase; padding: 6px 16px; border-radius: 4px; margin-bottom: 24px; animation: aparecer 0.5s ease both; }
+  .nombre-grande { font-family: 'Bebas Neue', sans-serif; font-size: clamp(48px, 12vw, 130px); line-height: 0.95; color: white; animation: aparecer 0.7s 0.2s ease both; }
+  .nombre-grande span { color: var(--amarillo); }
+  .sub-portada { color: rgba(255,255,255,0.7); font-size: clamp(14px, 2.5vw, 20px); margin-top: 20px; animation: aparecer 0.7s 0.5s ease both; }
+  .btn-empezar { margin-top: 40px; padding: 16px 40px; background: var(--amarillo); color: var(--oscuro); font-family: 'Nunito', sans-serif; font-weight: 900; font-size: 18px; border: none; border-radius: 6px; cursor: pointer; box-shadow: 6px 6px 0 var(--naranja); transition: transform 0.1s, box-shadow 0.1s; animation: aparecer 0.7s 0.8s ease both; letter-spacing: 1px; }
+  .btn-empezar:hover { transform: translate(-3px,-3px); box-shadow: 9px 9px 0 var(--naranja); }
+  .globos-deco { position: absolute; bottom: 0; left: 0; right: 0; display: flex; justify-content: space-around; align-items: flex-end; pointer-events: none; padding: 0 5%; }
+  .globo { font-size: clamp(40px, 8vw, 80px); animation: flotar 3s ease-in-out infinite; opacity: 0.9; }
+  .globo:nth-child(2) { animation-delay: 0.5s; }
+  .globo:nth-child(3) { animation-delay: 1s; }
+  .globo:nth-child(4) { animation-delay: 1.5s; }
+  .globo:nth-child(5) { animation-delay: 0.8s; }
+
+  /* FAMILIA */
+  #s1 { background: #FFF3E0; }
+  .sec-header { text-align: center; margin-bottom: 40px; }
+  .sec-tag { display: inline-block; padding: 4px 14px; border-radius: 4px; font-size: 12px; font-weight: 900; letter-spacing: 3px; text-transform: uppercase; margin-bottom: 12px; }
+  .tag-naranja { background: var(--naranja); color: white; }
+  .tag-lila { background: var(--lila); color: white; }
+  .tag-verde { background: var(--verde); color: white; }
+  .tag-azul { background: var(--azul); color: white; }
+  .sec-titulo { font-family: 'Bebas Neue', sans-serif; font-size: clamp(36px, 7vw, 64px); color: var(--oscuro); line-height: 1; }
+  .polaroids-wrap { display: flex; gap: 20px; flex-wrap: wrap; justify-content: center; max-width: 900px; }
+  .polaroid { background: white; padding: 12px 12px 50px; border-radius: 4px; width: 160px; box-shadow: 0 8px 30px rgba(0,0,0,0.12); transform: rotate(var(--rot)); transition: transform 0.3s cubic-bezier(.17,.67,.51,1.4), box-shadow 0.3s; cursor: pointer; position: relative; flex-shrink: 0; }
+  .polaroid:hover { transform: rotate(0deg) scale(1.15) translateY(-8px); box-shadow: 0 20px 50px rgba(0,0,0,0.2); z-index: 10; }
+  .polaroid img { width: 100%; aspect-ratio: 1; object-fit: cover; display: block; border-radius: 2px; }
+  .polaroid-label { position: absolute; bottom: 10px; left: 0; right: 0; text-align: center; font-weight: 700; font-size: 13px; color: #444; }
+  .polaroid-audio-indicator { position: absolute; top: 8px; right: 8px; background: var(--naranja); color: white; border-radius: 50%; width: 22px; height: 22px; display: flex; align-items: center; justify-content: center; font-size: 11px; }
+  .polaroid.playing { outline: 3px solid var(--naranja); outline-offset: 4px; }
+
+  /* PERSONAJES */
+  #s2 { background: var(--oscuro); }
+  #s2 .sec-titulo { color: white; }
+  .personajes-grid { display: flex; gap: 16px; flex-wrap: wrap; justify-content: center; max-width: 900px; }
+  .carta-personaje { width: 160px; height: 240px; perspective: 1200px; cursor: pointer; flex-shrink: 0; }
+  .carta-inner { width: 100%; height: 100%; position: relative; transition: transform 0.7s cubic-bezier(.4,0,.2,1); transform-style: preserve-3d; }
+  .carta-personaje.abierta .carta-inner { transform: rotateY(180deg); }
+  .cara-f, .cara-t { position: absolute; inset: 0; border-radius: 16px; backface-visibility: hidden; display: flex; flex-direction: column; align-items: center; justify-content: center; padding: 16px; text-align: center; }
+  .cara-f { color: white; font-weight: 900; font-size: 14px; gap: 10px; }
+  .cara-f .emoji-big { font-size: 48px; }
+  .cara-f .nombre-carta { font-family: 'Bebas Neue', sans-serif; font-size: 22px; letter-spacing: 1px; }
+  .cara-f .toca { font-size: 11px; opacity: 0.8; letter-spacing: 1px; }
+  .cara-t { background: white; color: var(--oscuro); transform: rotateY(180deg); font-size: 13px; line-height: 1.5; font-weight: 700; }
+  .cara-t .firma { margin-top: 10px; font-size: 20px; }
+  .c1 .cara-f { background: linear-gradient(135deg, #FF6B6B, #FF4D4D); }
+  .c2 .cara-f { background: linear-gradient(135deg, #A855F7, #7C3AED); }
+  .c3 .cara-f { background: linear-gradient(135deg, #F59E0B, #D97706); }
+  .c4 .cara-f { background: linear-gradient(135deg, #10B981, #059669); }
+  .c5 .cara-f { background: linear-gradient(135deg, #3B82F6, #2563EB); }
+
+  /* RULETA */
+  #s3 { background: var(--oscuro); }
+  #s3 .sec-titulo { color: white; }
+  .ruleta-layout { display: flex; gap: 40px; align-items: flex-start; flex-wrap: wrap; justify-content: center; max-width: 950px; width: 100%; }
+  .ruleta-col { display: flex; flex-direction: column; align-items: center; gap: 20px; }
+  .ruleta-container { position: relative; }
+  #canvas-ruleta { border-radius: 50%; box-shadow: 0 0 0 8px white, 0 0 0 14px var(--amarillo), 0 20px 60px rgba(0,0,0,0.5); display: block; }
+  .puntero { position: absolute; top: 50%; right: -28px; transform: translateY(-50%); font-size: 42px; filter: drop-shadow(2px 2px 4px rgba(0,0,0,0.4)); z-index: 10; }
+  .centro-ruleta { position: absolute; top: 50%; left: 50%; transform: translate(-50%,-50%); width: 54px; height: 54px; background: var(--oscuro); border-radius: 50%; border: 4px solid var(--amarillo); z-index: 10; display: flex; align-items: center; justify-content: center; font-size: 22px; }
+  .btn-girar { padding: 18px 50px; background: var(--amarillo); color: var(--oscuro); font-family: 'Bebas Neue', sans-serif; font-size: 28px; letter-spacing: 3px; border: none; border-radius: 6px; cursor: pointer; box-shadow: 6px 6px 0 var(--naranja); transition: transform 0.1s, box-shadow 0.1s; }
+  .btn-girar:hover { transform: translate(-3px,-3px); box-shadow: 9px 9px 0 var(--naranja); }
+  .btn-girar:disabled { opacity: 0.4; cursor: not-allowed; transform: none; box-shadow: 4px 4px 0 #888; }
+
+  /* LISTA */
+  .lista-col { min-width: 220px; max-width: 260px; }
+  .lista-titulo { font-family: 'Bebas Neue', sans-serif; font-size: 22px; color: var(--amarillo); letter-spacing: 2px; text-align: center; margin-bottom: 14px; }
+  .lista-opciones { display: flex; flex-direction: column; gap: 10px; }
+  .lista-item { background: rgba(255,255,255,0.08); border: 2px solid rgba(255,255,255,0.15); color: white; font-family: 'Nunito', sans-serif; font-weight: 700; font-size: 14px; padding: 11px 16px; border-radius: 10px; cursor: pointer; transition: all 0.2s; text-align: left; display: flex; align-items: center; gap: 8px; }
+  .lista-item:hover:not(.bloqueado) { background: rgba(255,255,255,0.18); border-color: var(--amarillo); transform: translateX(4px); }
+  .lista-item.seleccionado { background: var(--amarillo); color: var(--oscuro); border-color: var(--amarillo); }
+  .lista-item.bloqueado { opacity: 0.35; cursor: not-allowed; }
+  .lista-nota { color: rgba(255,255,255,0.4); font-size: 12px; text-align: center; margin-top: 10px; line-height: 1.4; }
+
+  .o-divisor { display: flex; flex-direction: column; align-items: center; gap: 10px; color: rgba(255,255,255,0.3); font-weight: 900; font-size: 13px; letter-spacing: 2px; padding-top: 50px; }
+  .o-divisor::before, .o-divisor::after { content: ''; width: 2px; height: 60px; background: rgba(255,255,255,0.15); }
+
+  /* MODALES */
+  .modal-overlay { position: fixed; inset: 0; background: rgba(0,0,0,0.82); z-index: 2000; display: none; align-items: center; justify-content: center; padding: 20px; }
+  .modal-overlay.visible { display: flex; }
+  .modal-box { background: white; border-radius: 20px; padding: 40px 32px; max-width: 380px; width: 100%; text-align: center; animation: popIn 0.4s cubic-bezier(.17,.67,.51,1.4) both; box-shadow: 0 30px 80px rgba(0,0,0,0.5); }
+  .modal-emoji { font-size: 64px; margin-bottom: 12px; display: block; }
+  .modal-titulo { font-family: 'Bebas Neue', sans-serif; font-size: 13px; letter-spacing: 4px; color: #999; text-transform: uppercase; margin-bottom: 8px; }
+  .modal-resultado { font-family: 'Bebas Neue', sans-serif; font-size: 36px; color: var(--oscuro); line-height: 1.1; margin-bottom: 8px; }
+  .modal-sub { font-size: 13px; color: #888; margin-bottom: 24px; }
+  .modal-confirmar { display: flex; gap: 12px; justify-content: center; flex-wrap: wrap; }
+  .btn-si { padding: 12px 28px; background: var(--verde); color: white; font-family: 'Nunito', sans-serif; font-weight: 900; font-size: 16px; border: none; border-radius: 8px; cursor: pointer; box-shadow: 4px 4px 0 #3a9944; transition: transform 0.1s, box-shadow 0.1s; }
+  .btn-si:hover { transform: translate(-2px,-2px); box-shadow: 6px 6px 0 #3a9944; }
+  .btn-no { padding: 12px 28px; background: #eee; color: #666; font-family: 'Nunito', sans-serif; font-weight: 900; font-size: 16px; border: none; border-radius: 8px; cursor: pointer; }
+  .btn-no:hover { background: #e0e0e0; }
+
+  .toast { position: fixed; bottom: 24px; left: 50%; transform: translateX(-50%) translateY(100px); background: var(--oscuro); color: white; padding: 14px 24px; border-radius: 10px; font-weight: 700; font-size: 14px; box-shadow: 0 8px 30px rgba(0,0,0,0.3); z-index: 3000; transition: transform 0.4s cubic-bezier(.17,.67,.51,1.4); white-space: nowrap; }
+  .toast.visible { transform: translateX(-50%) translateY(0); }
+
+  footer { background: var(--oscuro); color: rgba(255,255,255,0.5); text-align: center; padding: 40px 20px; font-size: 14px; }
+  footer span { color: var(--amarillo); font-weight: 700; }
+
+  @keyframes aparecer { from { opacity: 0; transform: translateY(30px); } to { opacity: 1; transform: translateY(0); } }
+  @keyframes flotar { 0%, 100% { transform: translateY(0); } 50% { transform: translateY(-20px); } }
+  @keyframes popIn { from { opacity: 0; transform: scale(0.7); } to { opacity: 1; transform: scale(1); } }
+
+  @media (max-width: 600px) {
+    .polaroid { width: 130px; }
+    .carta-personaje { width: 140px; height: 210px; }
+    .nav-dots { display: none; }
+    #btn-musica { top: 10px; right: 10px; padding: 8px 14px; font-size: 12px; }
+    .o-divisor { flex-direction: row; padding-top: 0; }
+    .o-divisor::before, .o-divisor::after { width: 50px; height: 2px; }
+    .puntero { right: -22px; font-size: 32px; }
+  }
+</style>
+</head>
+<body>
+
+<canvas id="confeti-canvas"></canvas>
+<div class="cursor" id="cursor"></div>
+
+<button id="btn-musica" onclick="toggleMusica()">
+  <span id="icon-musica">▶</span> Música
+</button>
+<audio id="bgmusic" loop>
+  <!-- <source src="musica.mp3" type="audio/mpeg"> -->
+</audio>
+
+<nav class="nav-dots">
+  <div class="dot active" onclick="irA(0)"></div>
+  <div class="dot" onclick="irA(1)"></div>
+  <div class="dot" onclick="irA(2)"></div>
+  <div class="dot" onclick="irA(3)"></div>
+</nav>
+
+<!-- S0: PORTADA -->
+<section id="s0">
+  <div class="fondo-sticker" aria-hidden="true">
+    <span>🎉</span><span>⭐</span><span>🎊</span><span>✨</span><span>🎈</span><span>🎉</span><span>⭐</span><span>🎊</span>
+    <span>✨</span><span>🎈</span><span>🎉</span><span>⭐</span><span>🎊</span><span>✨</span><span>🎈</span><span>🎉</span>
+    <span>🎊</span><span>✨</span><span>🎈</span><span>🎉</span><span>⭐</span><span>🎊</span><span>✨</span><span>🎈</span>
+    <span>🎉</span><span>⭐</span><span>🎊</span><span>✨</span><span>🎈</span><span>🎉</span><span>⭐</span><span>🎊</span>
+    <span>✨</span><span>🎈</span><span>🎉</span><span>⭐</span><span>🎊</span><span>✨</span><span>🎈</span><span>🎉</span>
+    <span>🎊</span><span>✨</span><span>🎈</span><span>🎉</span><span>⭐</span><span>🎊</span><span>✨</span><span>🎈</span>
+  </div>
+  <div class="portada-content">
+    <div class="tag-arriba">🎂 Hoy es tu día especial</div>
+    <h1 class="nombre-grande">¡FELIZ<br>CUMPLEAÑOS<br><span>MONSE!</span></h1>
+    <p class="sub-portada">Esto lo hice con mucho cariño para ti 🧡</p>
+    <button class="btn-empezar" onclick="irA(1); lanzarConfeti()">Abrir regalo ✨</button>
+  </div>
+  <div class="globos-deco" aria-hidden="true">
+    <span class="globo">🎈</span><span class="globo">🎊</span><span class="globo">🎉</span>
+    <span class="globo">🎊</span><span class="globo">🎈</span>
+  </div>
+</section>
+
+<!-- S1: FAMILIA -->
+<section id="s1">
+  <div class="sec-header">
+    <div class="sec-tag tag-naranja">📸 Recuerdos</div>
+    <h2 class="sec-titulo">Tu gente favorita</h2>
+  </div>
+  <div class="polaroids-wrap">
+    <div class="polaroid" style="--rot:-5deg" onclick="playAudio('aud1', this)">
+      <div class="polaroid-audio-indicator">♪</div>
+      <img src="https://via.placeholder.com/150/FFD93D/1a1a2e?text=📷" alt="Mamá">
+      <div class="polaroid-label">Mamá 💛</div>
+      <audio id="aud1"><!-- <source src="audio-mama.mp3"> --></audio>
+    </div>
+    <div class="polaroid" style="--rot:4deg" onclick="playAudio('aud2', this)">
+      <div class="polaroid-audio-indicator">♪</div>
+      <img src="https://via.placeholder.com/150/FF6B35/ffffff?text=📷" alt="Papá">
+      <div class="polaroid-label">Papá 🧡</div>
+      <audio id="aud2"><!-- <source src="audio-papa.mp3"> --></audio>
+    </div>
+    <div class="polaroid" style="--rot:-3deg" onclick="playAudio('aud3', this)">
+      <div class="polaroid-audio-indicator">♪</div>
+      <img src="https://via.placeholder.com/150/C77DFF/ffffff?text=📷" alt="Hermana">
+      <div class="polaroid-label">Hermana 💜</div>
+      <audio id="aud3"><!-- <source src="audio-hermana.mp3"> --></audio>
+    </div>
+    <div class="polaroid" style="--rot:6deg" onclick="playAudio('aud4', this)">
+      <div class="polaroid-audio-indicator">♪</div>
+      <img src="https://via.placeholder.com/150/6BCB77/ffffff?text=📷" alt="Otro">
+      <div class="polaroid-label">Amigo peludo 🐶</div>
+      <audio id="aud4"><!-- <source src="audio-otro.mp3"> --></audio>
+    </div>
+  </div>
+  <p style="margin-top:24px; color:#999; font-size:13px; text-align:center;">Toca cada foto para escuchar su mensaje 🔊</p>
+  <div class="nav-btns">
+    <button class="btn-nav btn-prev" onclick="irA(0)">← Inicio</button>
+    <button class="btn-nav btn-next" onclick="irA(2)">Siguiente →</button>
+  </div>
+</section>
+
+<!-- S2: PERSONAJES -->
+<section id="s2">
+  <div class="sec-header">
+    <div class="sec-tag tag-lila">💌 Mensajes</div>
+    <h2 class="sec-titulo" style="color:white">Te escribieron</h2>
+    <p style="color:rgba(255,255,255,0.5); font-size:13px; margin-top:8px;">Voltea cada carta para leer su mensaje</p>
+  </div>
+  <div class="personajes-grid">
+    <div class="carta-personaje c1" onclick="abrirCarta(this)">
+      <div class="carta-inner">
+        <div class="cara-f"><span class="emoji-big">🎵</span><span class="nombre-carta">Personaje 1</span><span class="toca">TOCA PARA LEER</span></div>
+        <div class="cara-t">"Pon aquí el mensaje del personaje para Monse 🎉"<div class="firma">✨</div></div>
+      </div>
+    </div>
+    <div class="carta-personaje c2" onclick="abrirCarta(this)">
+      <div class="carta-inner">
+        <div class="cara-f"><span class="emoji-big">🌟</span><span class="nombre-carta">Personaje 2</span><span class="toca">TOCA PARA LEER</span></div>
+        <div class="cara-t">"Pon aquí el mensaje del personaje para Monse 🎊"<div class="firma">💜</div></div>
+      </div>
+    </div>
+    <div class="carta-personaje c3" onclick="abrirCarta(this)">
+      <div class="carta-inner">
+        <div class="cara-f"><span class="emoji-big">🔥</span><span class="nombre-carta">Personaje 3</span><span class="toca">TOCA PARA LEER</span></div>
+        <div class="cara-t">"Pon aquí el mensaje del personaje para Monse 🎈"<div class="firma">🧡</div></div>
+      </div>
+    </div>
+    <div class="carta-personaje c4" onclick="abrirCarta(this)">
+      <div class="carta-inner">
+        <div class="cara-f"><span class="emoji-big">💫</span><span class="nombre-carta">Personaje 4</span><span class="toca">TOCA PARA LEER</span></div>
+        <div class="cara-t">"Pon aquí el mensaje del personaje para Monse 🎂"<div class="firma">💚</div></div>
+      </div>
+    </div>
+    <div class="carta-personaje c5" onclick="abrirCarta(this)">
+      <div class="carta-inner">
+        <div class="cara-f"><span class="emoji-big">⚡</span><span class="nombre-carta">Personaje 5</span><span class="toca">TOCA PARA LEER</span></div>
+        <div class="cara-t">"Pon aquí el mensaje del personaje para Monse ✨"<div class="firma">💙</div></div>
+      </div>
+    </div>
+  </div>
+  <div class="nav-btns">
+    <button class="btn-nav btn-prev" onclick="irA(1)">← Anterior</button>
+    <button class="btn-nav btn-next" onclick="irA(3)">Última sorpresa →</button>
+  </div>
+</section>
+
+<!-- S3: RULETA -->
+<section id="s3">
+  <div class="sec-header">
+    <div class="sec-tag tag-azul">🎡 Ruleta del destino</div>
+    <h2 class="sec-titulo">¿Qué hacemos?</h2>
+    <p style="color:rgba(255,255,255,0.5); margin-top:8px; font-size:14px;">Gira la ruleta o elige tú misma 👀</p>
+  </div>
+  <div class="ruleta-layout">
+    <div class="ruleta-col">
+      <div class="ruleta-container" id="ruleta-container">
+        <canvas id="canvas-ruleta"></canvas>
+        <div class="puntero">👉</div>
+        <div class="centro-ruleta">🎲</div>
+      </div>
+      <button class="btn-girar" id="btn-girar" onclick="girarRuleta()">¡GIRAR!</button>
+    </div>
+    <div class="o-divisor">O</div>
+    <div class="lista-col">
+      <div class="lista-titulo">Elige tú misma</div>
+      <div class="lista-opciones" id="lista-opciones"></div>
+      <p class="lista-nota" id="lista-nota">Puedes cambiar de opinión una sola vez 👀</p>
+    </div>
+  </div>
+  <div class="nav-btns" style="margin-top:40px">
+    <button class="btn-nav btn-prev" onclick="irA(2)">← Anterior</button>
+  </div>
+</section>
+
+<!-- MODAL 1: resultado inicial -->
+<div class="modal-overlay" id="modal1">
+  <div class="modal-box">
+    <span class="modal-emoji" id="m1-emoji">🎉</span>
+    <div class="modal-titulo" id="m1-titulo">El universo dice que...</div>
+    <div class="modal-resultado" id="m1-resultado"></div>
+    <div class="modal-sub" id="m1-sub"></div>
+    <div class="modal-confirmar">
+      <button class="btn-si" onclick="confirmar1()">¡Acepto! 🎊</button>
+      <button class="btn-no" onclick="rechazar1()">Tirar de nuevo...</button>
+    </div>
+  </div>
+</div>
+
+<!-- MODAL 2: ¿estás segura? -->
+<div class="modal-overlay" id="modal2">
+  <div class="modal-box">
+    <span class="modal-emoji">🤔</span>
+    <div class="modal-titulo">Espera un momento</div>
+    <div class="modal-resultado" style="font-size:28px">¿Estás segura?</div>
+    <div class="modal-sub">Una vez que aceptes... ¡no hay vuelta atrás! 👀</div>
+    <div class="modal-confirmar">
+      <button class="btn-si" onclick="confirmar2()">Sí, segura</button>
+      <button class="btn-no" onclick="rechazar2()">Mejor no...</button>
+    </div>
+  </div>
+</div>
+
+<!-- MODAL 3: ¿SEGURA segura? -->
+<div class="modal-overlay" id="modal3">
+  <div class="modal-box">
+    <span class="modal-emoji">😏</span>
+    <div class="modal-titulo">ÚLTIMA oportunidad</div>
+    <div class="modal-resultado" style="font-size:24px">¿Estás SEGURA segura? 😂</div>
+    <div class="modal-sub">No te voy a dejar escapar después jajaja</div>
+    <div class="modal-confirmar">
+      <button class="btn-si" onclick="confirmarFinal()">¡SÍ, LO JURO! 🎊</button>
+      <button class="btn-no" onclick="rechazarFinal()">Cambio de opinión...</button>
+    </div>
+  </div>
+</div>
+
+<!-- MODAL FINAL -->
+<div class="modal-overlay" id="modalFinal">
+  <div class="modal-box">
+    <span class="modal-emoji">🥳</span>
+    <div class="modal-titulo">¡Trato hecho!</div>
+    <div class="modal-resultado" id="mf-resultado" style="font-size:32px"></div>
+    <div class="modal-sub">¡Ya no puedes arrepentirte! Le avisé a quien tiene que saber 😄</div>
+    <div class="modal-confirmar">
+      <button class="btn-si" onclick="cerrarTodo(); lanzarConfeti(true)">¡Yayyy! 🎉</button>
+    </div>
+  </div>
+</div>
+
+<div class="toast" id="toast"></div>
+
+<footer>
+  Hecho con 🧡 para <span>Monse</span> &nbsp;·&nbsp; ¡Que sea un gran año!
+</footer>
+
+<script src="https://cdn.jsdelivr.net/npm/@emailjs/browser@3/dist/email.min.js"></script>
+<script>
+// ======= EMAILJS =======
+// Cuando tengas el Template ID y Public Key, reemplaza aquí:
+const EJ_SERVICE  = 'service_5vqeehr';
+const EJ_TEMPLATE = 'TEMPLATE_ID_AQUI';  // <-- reemplazar
+const EJ_PUBLIC   = 'PUBLIC_KEY_AQUI';   // <-- reemplazar
+
+try { emailjs.init(EJ_PUBLIC); } catch(e){}
+
+function enviarCorreo(opcion, metodo) {
+  try {
+    emailjs.send(EJ_SERVICE, EJ_TEMPLATE, {
+      opcion_elegida: opcion,
+      metodo: metodo,
+      to_email: 'mirwanitushar@gmail.com',
+      mensaje: 'Monse eligió: "' + opcion + '" (vía ' + metodo + ')'
+    }).then(function(){
+      mostrarToast('📧 ¡Correo enviado! Ya sé qué quiere 😄');
+    }).catch(function(){
+      mostrarToast('✅ ¡Elección confirmada!');
+    });
+  } catch(e) { mostrarToast('✅ ¡Elección registrada!'); }
+}
+
+// ======= CURSOR =======
+const cur = document.getElementById('cursor');
+document.addEventListener('mousemove', function(e){
+  cur.style.left = e.clientX + 'px';
+  cur.style.top = e.clientY + 'px';
+});
+
+// ======= NAV =======
+const secs = document.querySelectorAll('section');
+const dots = document.querySelectorAll('.dot');
+function irA(n){ secs[n].scrollIntoView({behavior:'smooth'}); }
+const obs = new IntersectionObserver(function(entries){
+  entries.forEach(function(e){
+    if(e.isIntersecting){
+      var idx = Array.from(secs).indexOf(e.target);
+      dots.forEach(function(d){ d.classList.remove('active'); });
+      if(dots[idx]) dots[idx].classList.add('active');
+    }
+  });
+},{threshold:0.5});
+secs.forEach(function(s){ obs.observe(s); });
+
+// ======= MÚSICA =======
+var music = document.getElementById('bgmusic');
+var musicPlaying = false;
+function toggleMusica(){
+  if(musicPlaying){ music.pause(); document.getElementById('icon-musica').textContent='▶'; }
+  else { music.play().catch(function(){}); document.getElementById('icon-musica').textContent='⏸'; }
+  musicPlaying = !musicPlaying;
+}
+
+// ======= AUDIOS POLAROID =======
+function playAudio(id, el){
+  document.querySelectorAll('.polaroid').forEach(function(p){ p.classList.remove('playing'); });
+  document.querySelectorAll('audio:not(#bgmusic)').forEach(function(a){ a.pause(); a.currentTime=0; });
+  var audio = document.getElementById(id);
+  if(audio.children.length > 0){
+    audio.play().catch(function(){});
+    el.classList.add('playing');
+  }
+}
+
+// ======= CARTAS =======
+function abrirCarta(el){ el.classList.toggle('abierta'); }
+
+// ======= CONFETI =======
+var cfCanvas = document.getElementById('confeti-canvas');
+var cfCtx = cfCanvas.getContext('2d');
+var piezas = []; var animando = false;
+cfCanvas.width = window.innerWidth; cfCanvas.height = window.innerHeight;
+window.addEventListener('resize', function(){ cfCanvas.width=window.innerWidth; cfCanvas.height=window.innerHeight; });
+var cols = ['#FFD93D','#FF6B35','#6BCB77','#4D96FF','#C77DFF','#FF6B6B','#fff'];
+
+function crearPieza(){
+  return { x:Math.random()*cfCanvas.width, y:-10, w:Math.random()*10+5, h:Math.random()*6+3,
+    color:cols[Math.floor(Math.random()*cols.length)], rot:Math.random()*Math.PI*2,
+    vx:(Math.random()-0.5)*4, vy:Math.random()*4+2, vr:(Math.random()-0.5)*0.15, alpha:1 };
+}
+
+function lanzarConfeti(burst){
+  var n = burst ? 200 : 100;
+  for(var i=0;i<n;i++) setTimeout(function(){ piezas.push(crearPieza()); }, Math.random()*800);
+  if(!animando) animarConfeti();
+}
+
+function animarConfeti(){
+  animando = true;
+  cfCtx.clearRect(0,0,cfCanvas.width,cfCanvas.height);
+  piezas = piezas.filter(function(p){ return p.alpha>0.01; });
+  piezas.forEach(function(p){
+    p.x+=p.vx; p.y+=p.vy; p.rot+=p.vr;
+    if(p.y > cfCanvas.height*0.7) p.alpha-=0.015;
+    cfCtx.save(); cfCtx.globalAlpha=p.alpha;
+    cfCtx.translate(p.x,p.y); cfCtx.rotate(p.rot);
+    cfCtx.fillStyle=p.color; cfCtx.fillRect(-p.w/2,-p.h/2,p.w,p.h);
+    cfCtx.restore();
+  });
+  if(piezas.length>0) requestAnimationFrame(animarConfeti);
+  else animando=false;
+}
+lanzarConfeti();
+
+// ======= OPCIONES =======
+var opcionesData = [
+  { texto:"Cena tú eliges 🍽️",   emoji:"🍽️", color:"#FF6B35" },
+  { texto:"Karaoke noche 🎤",      emoji:"🎤", color:"#C77DFF" },
+  { texto:"Pelis + snacks 🍿",     emoji:"🍿", color:"#4D96FF" },
+  { texto:"Salida sorpresa 🎁",    emoji:"🎁", color:"#FFD93D" },
+  { texto:"Spa day casero 💆",     emoji:"💆", color:"#6BCB77" },
+  { texto:"Opción 6 ✨",           emoji:"✨", color:"#FF6B6B" },
+];
+
+// ======= LISTA FIJA =======
+var seleccionLista = null;
+var cambiosLista = 0;
+var listaEl = document.getElementById('lista-opciones');
+
+opcionesData.forEach(function(op, i){
+  var btn = document.createElement('button');
+  btn.className = 'lista-item';
+  btn.dataset.idx = i;
+  btn.textContent = op.emoji + ' ' + op.texto;
+  btn.onclick = function(){ elegirDeLista(i, btn); };
+  listaEl.appendChild(btn);
+});
+
+function elegirDeLista(idx, btn){
+  if(btn.classList.contains('bloqueado')) return;
+  if(seleccionLista !== null && seleccionLista !== idx){
+    if(cambiosLista >= 1){
+      mostrarToast('⛔ Solo puedes cambiar una vez, ¡ya usaste tu comodín!');
+      return;
+    }
+    cambiosLista++;
+    if(cambiosLista >= 1){
+      document.getElementById('lista-nota').textContent = '¡Ya usaste tu comodín! Esta es tu elección final 🔒';
+    }
+  }
+  seleccionLista = idx;
+  document.querySelectorAll('.lista-item').forEach(function(b){ b.classList.remove('seleccionado'); });
+  btn.classList.add('seleccionado');
+  resultadoPendiente = opcionesData[idx].texto;
+  mostrarModal1('lista');
+}
+
+// ======= MODAL FLOW =======
+var resultadoPendiente = '';
+var metodoActual = '';
+
+function mostrarModal1(metodo){
+  metodoActual = metodo;
+  var emojis = ['🎉','🎊','✨','🥳','🎈','🎁'];
+  var idx = opcionesData.findIndex(function(o){ return o.texto === resultadoPendiente; });
+  document.getElementById('m1-emoji').textContent = emojis[idx] || '🎉';
+  document.getElementById('m1-resultado').textContent = resultadoPendiente;
+  document.getElementById('m1-titulo').textContent = metodo==='ruleta' ? 'La ruleta decidió...' : '¡Elegiste!';
+  document.getElementById('m1-sub').textContent = metodo==='ruleta' ? '¡Eso fue lo que salió!' : '¡Buena elección!';
+  document.getElementById('modal1').classList.add('visible');
+}
+
+function confirmar1(){
+  document.getElementById('modal1').classList.remove('visible');
+  setTimeout(function(){ document.getElementById('modal2').classList.add('visible'); }, 200);
+}
+
+function rechazar1(){
+  document.getElementById('modal1').classList.remove('visible');
+  if(metodoActual==='lista'){
+    document.querySelectorAll('.lista-item').forEach(function(b){ b.classList.remove('seleccionado'); });
+    seleccionLista = null;
+  }
+}
+
+function confirmar2(){
+  document.getElementById('modal2').classList.remove('visible');
+  setTimeout(function(){ document.getElementById('modal3').classList.add('visible'); }, 200);
+}
+
+function rechazar2(){
+  document.getElementById('modal2').classList.remove('visible');
+  if(metodoActual==='lista'){
+    document.querySelectorAll('.lista-item').forEach(function(b){ b.classList.remove('seleccionado'); });
+    seleccionLista = null;
+  }
+}
+
+function confirmarFinal(){
+  document.getElementById('modal3').classList.remove('visible');
+  document.getElementById('mf-resultado').textContent = resultadoPendiente;
+  setTimeout(function(){ document.getElementById('modalFinal').classList.add('visible'); }, 200);
+  // bloquear todo para siempre
+  document.getElementById('btn-girar').disabled = true;
+  document.querySelectorAll('.lista-item').forEach(function(b){ b.classList.add('bloqueado'); });
+  enviarCorreo(resultadoPendiente, metodoActual==='ruleta' ? 'Ruleta' : 'Lista');
+}
+
+function rechazarFinal(){
+  document.getElementById('modal3').classList.remove('visible');
+  mostrarToast('¡Inténtalo de nuevo! 😄');
+  if(metodoActual==='lista'){
+    document.querySelectorAll('.lista-item').forEach(function(b){ b.classList.remove('seleccionado'); });
+    seleccionLista = null;
+  }
+}
+
+function cerrarTodo(){
+  ['modal1','modal2','modal3','modalFinal'].forEach(function(id){
+    document.getElementById(id).classList.remove('visible');
+  });
+}
+
+// ======= RULETA CANVAS =======
+var canvasR = document.getElementById('canvas-ruleta');
+var ctxR = canvasR.getContext('2d');
+var CX, CY, RADIO;
+var anguloActual = 0;
+
+function ajustarRuleta(){
+  var size = Math.min(window.innerWidth - 80, 400);
+  canvasR.width = size; canvasR.height = size;
+  CX = size/2; CY = size/2; RADIO = CX - 12;
+  dibujarRuleta(anguloActual);
+}
+
+function dibujarRuleta(angulo){
+  var n = opcionesData.length;
+  var slice = (Math.PI*2)/n;
+  ctxR.clearRect(0,0,canvasR.width,canvasR.height);
+  opcionesData.forEach(function(op,i){
+    var inicio = angulo + i*slice;
+    var fin = inicio + slice;
+    ctxR.beginPath(); ctxR.moveTo(CX,CY);
+    ctxR.arc(CX,CY,RADIO,inicio,fin); ctxR.closePath();
+    ctxR.fillStyle = op.color; ctxR.fill();
+    ctxR.strokeStyle='white'; ctxR.lineWidth=3; ctxR.stroke();
+    ctxR.save(); ctxR.translate(CX,CY); ctxR.rotate(inicio+slice/2);
+    ctxR.textAlign='right'; ctxR.fillStyle='white';
+    ctxR.font='bold 12px Nunito, sans-serif';
+    ctxR.shadowColor='rgba(0,0,0,0.4)'; ctxR.shadowBlur=4;
+    var partes = op.texto.replace(/\s[^\s]*$/, '').split(' ');
+    var linea1 = op.texto.split(' ').slice(0,2).join(' ');
+    var linea2 = op.texto.split(' ').slice(2).join(' ');
+    if(linea2){
+      ctxR.fillText(linea1, RADIO-14, -8);
+      ctxR.fillText(linea2, RADIO-14, 10);
+    } else {
+      ctxR.fillText(op.texto, RADIO-14, 5);
+    }
+    ctxR.restore();
+  });
+}
+
+window.addEventListener('resize', ajustarRuleta);
+ajustarRuleta();
+
+var girando = false;
+function girarRuleta(){
+  if(girando) return;
+  girando = true;
+  document.getElementById('btn-girar').disabled = true;
+  var vueltas = (Math.floor(Math.random()*5)+6)*Math.PI*2;
+  var extra = Math.random()*Math.PI*2;
+  var totalGiro = vueltas+extra;
+  var duracion = 4500;
+  var inicio = performance.now();
+  var anguloInicio = anguloActual;
+
+  function animar(ahora){
+    var t = Math.min((ahora-inicio)/duracion,1);
+    var ease = 1-Math.pow(1-t,4);
+    anguloActual = anguloInicio + totalGiro*ease;
+    dibujarRuleta(anguloActual);
+    if(t<1){ requestAnimationFrame(animar); }
+    else {
+      girando=false;
+      document.getElementById('btn-girar').disabled=false;
+      mostrarResultadoRuleta(anguloActual);
+    }
+  }
+  requestAnimationFrame(animar);
+}
+
+function mostrarResultadoRuleta(angulo){
+  var n = opcionesData.length;
+  var slice = (Math.PI*2)/n;
+  var ajustado = ((-angulo)%(Math.PI*2)+Math.PI*2)%(Math.PI*2);
+  var idx = Math.floor(ajustado/slice)%n;
+  resultadoPendiente = opcionesData[idx].texto;
+  mostrarModal1('ruleta');
+}
+
+// ======= TOAST =======
+function mostrarToast(msg){
+  var t = document.getElementById('toast');
+  t.textContent = msg;
+  t.classList.add('visible');
+  setTimeout(function(){ t.classList.remove('visible'); }, 3500);
+}
+</script>
+</body>
+</html>
