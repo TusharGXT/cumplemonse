@@ -6,7 +6,12 @@
 <title>¡Feliz Cumpleaños Monse! 🎉</title>
 <link href="https://fonts.googleapis.com/css2?family=Bebas+Neue&family=Nunito:wght@400;700;900&display=swap" rel="stylesheet">
 <style>
-:root{--amarillo:#FFD93D;--naranja:#FF6B35;--verde:#6BCB77;--azul:#4D96FF;--lila:#C77DFF;--fondo:#FFF8F0;--oscuro:#1a1a2e;--texto:#2d2d2d}
+:root{
+  --amarillo:#FFD93D;--naranja:#FF6B35;--verde:#6BCB77;
+  --azul:#4D96FF;--lila:#C77DFF;--fondo:#FFF8F0;
+  --oscuro:#1a1a2e;--texto:#2d2d2d;
+  --dorado1:#FFD700;--dorado2:#FFA500;--dorado3:#B8860B;
+}
 *{margin:0;padding:0;box-sizing:border-box}
 body{font-family:'Nunito',sans-serif;background:var(--fondo);color:var(--texto);overflow-x:hidden;cursor:none}
 .cursor{width:18px;height:18px;background:var(--naranja);border-radius:50%;position:fixed;pointer-events:none;z-index:9999;transform:translate(-50%,-50%);mix-blend-mode:multiply}
@@ -24,7 +29,7 @@ section{min-height:100vh;display:flex;flex-direction:column;justify-content:cent
 .btn-next{background:var(--amarillo);color:var(--oscuro);box-shadow:6px 6px 0 var(--naranja)}
 .btn-next:hover{transform:translate(-3px,-3px);box-shadow:9px 9px 0 var(--naranja)}
 
-/* PORTADA */
+/* ===== PORTADA ===== */
 #s0{background:var(--oscuro);overflow:hidden}
 .fondo-sticker{position:absolute;inset:0;display:grid;grid-template-columns:repeat(8,1fr);grid-template-rows:repeat(6,1fr);opacity:.07;font-size:40px;overflow:hidden;pointer-events:none}
 .fondo-sticker span{display:flex;align-items:center;justify-content:center}
@@ -41,11 +46,12 @@ section{min-height:100vh;display:flex;flex-direction:column;justify-content:cent
 .globo{font-size:clamp(36px,7vw,70px);animation:flotar 3s ease-in-out infinite;opacity:.9}
 .globo:nth-child(2){animation-delay:.5s}.globo:nth-child(3){animation-delay:1s}.globo:nth-child(4){animation-delay:1.5s}.globo:nth-child(5){animation-delay:.8s}
 
-/* FAMILIA */
+/* ===== FAMILIA ===== */
 #s1{background:#FFF3E0}
 .sec-header{text-align:center;margin-bottom:36px}
 .sec-tag{display:inline-block;padding:4px 14px;border-radius:4px;font-size:11px;font-weight:900;letter-spacing:3px;text-transform:uppercase;margin-bottom:10px}
-.tag-naranja{background:var(--naranja);color:white}.tag-lila{background:var(--lila);color:white}.tag-verde{background:var(--verde);color:white}.tag-azul{background:var(--azul);color:white}
+.tag-naranja{background:var(--naranja);color:white}.tag-lila{background:var(--lila);color:white}
+.tag-verde{background:var(--verde);color:white}.tag-azul{background:var(--azul);color:white}
 .sec-titulo{font-family:'Bebas Neue',sans-serif;font-size:clamp(32px,6vw,58px);color:var(--oscuro);line-height:1}
 .polaroids-wrap{display:flex;gap:18px;flex-wrap:wrap;justify-content:center;max-width:860px}
 .polaroid{background:white;padding:10px 10px 46px;border-radius:4px;width:150px;box-shadow:0 8px 28px rgba(0,0,0,.12);transform:rotate(var(--rot));transition:transform .3s cubic-bezier(.17,.67,.51,1.4),box-shadow .3s;cursor:pointer;position:relative;flex-shrink:0}
@@ -58,7 +64,7 @@ section{min-height:100vh;display:flex;flex-direction:column;justify-content:cent
 #hermana-extra img{width:100%;border-radius:14px;box-shadow:0 12px 40px rgba(0,0,0,.15)}
 #hermana-extra p{font-size:13px;color:#888;font-style:italic}
 
-/* PERSONAJES */
+/* ===== PERSONAJES ===== */
 #s2{background:var(--oscuro)}
 #s2 .sec-titulo{color:white}
 .personajes-grid{display:grid;grid-template-columns:repeat(auto-fit,minmax(260px,1fr));gap:18px;max-width:880px;width:100%}
@@ -75,13 +81,28 @@ section{min-height:100vh;display:flex;flex-direction:column;justify-content:cent
 .cara-f .toca{font-size:10px;opacity:.8;letter-spacing:2px;background:rgba(255,255,255,.2);padding:3px 10px;border-radius:20px}
 .cara-t{background:white;color:var(--oscuro);transform:rotateY(180deg);font-size:14px;line-height:1.6;font-weight:700;padding:22px 26px}
 .cara-t .firma{margin-top:10px;font-size:20px}
-.c1 .cara-f{background:linear-gradient(135deg,#FF6B6B,#FF4D4D)}.c2 .cara-f{background:linear-gradient(135deg,#A855F7,#7C3AED)}.c3 .cara-f{background:linear-gradient(135deg,#F59E0B,#D97706)}.c4 .cara-f{background:linear-gradient(135deg,#10B981,#059669)}.c5 .cara-f{background:linear-gradient(135deg,#3B82F6,#2563EB)}
+.c1 .cara-f{background:linear-gradient(135deg,#FF6B6B,#FF4D4D)}
+.c2 .cara-f{background:linear-gradient(135deg,#A855F7,#7C3AED)}
+.c3 .cara-f{background:linear-gradient(135deg,#F59E0B,#D97706)}
+.c4 .cara-f{background:linear-gradient(135deg,#10B981,#059669)}
+.c5 .cara-f{background:linear-gradient(135deg,#3B82F6,#2563EB)}
 
-/* RULETA */
+/* CARTA LEGENDARIA DORADA */
+.c6 .cara-f{background:linear-gradient(135deg,var(--dorado1),var(--dorado2),var(--dorado3))}
+.c6{position:relative}
+.c6::before{content:'';position:absolute;inset:-3px;border-radius:17px;background:linear-gradient(135deg,#FFD700,#FFF5A0,#FFD700,#FFA500,#FFD700);z-index:0;animation:shimmer 2.5s linear infinite}
+.c6 .carta-inner{position:relative;z-index:1}
+.c6 .cara-t{background:linear-gradient(135deg,#fffbe6,#fff8d0);color:var(--dorado3);border:2px solid var(--dorado2)}
+.c6 .cara-t .firma{font-size:24px}
+.c6 .cara-f .nombre-carta{text-shadow:0 2px 12px rgba(0,0,0,.6),0 0 20px rgba(255,215,0,.8)}
+.c6 .toca{background:rgba(255,215,0,.3);color:white}
+@keyframes shimmer{0%{opacity:.7}50%{opacity:1}100%{opacity:.7}}
+
+/* ===== RULETA ===== */
 #s3{background:var(--oscuro);padding-top:90px}
 #s3 .sec-titulo{color:white}
 .fase{display:none;flex-direction:column;align-items:center;width:100%;max-width:900px}
-.fase.activa{display:flex}
+.fase.activa{display:flex;animation:aparecer .5s ease both}
 .ruleta-col{display:flex;flex-direction:column;align-items:center;gap:20px}
 .ruleta-container{position:relative}
 #canvas-ruleta{border-radius:50%;box-shadow:0 0 0 7px white,0 0 0 13px var(--amarillo),0 20px 60px rgba(0,0,0,.5);display:block}
@@ -90,7 +111,7 @@ section{min-height:100vh;display:flex;flex-direction:column;justify-content:cent
 .btn-girar{padding:16px 44px;background:var(--amarillo);color:var(--oscuro);font-family:'Bebas Neue',sans-serif;font-size:26px;letter-spacing:3px;border:none;border-radius:6px;cursor:pointer;box-shadow:6px 6px 0 var(--naranja);transition:transform .1s,box-shadow .1s}
 .btn-girar:hover{transform:translate(-3px,-3px);box-shadow:9px 9px 0 var(--naranja)}
 .btn-girar:disabled{opacity:.4;cursor:not-allowed;transform:none;box-shadow:4px 4px 0 #888}
-.ruleta-info{color:rgba(255,255,255,.6);font-size:13px;text-align:center;max-width:340px}
+.ruleta-info{color:rgba(255,255,255,.65);font-size:13px;text-align:center;max-width:340px;line-height:1.5}
 .lista-col{width:100%;max-width:480px}
 .lista-titulo{font-family:'Bebas Neue',sans-serif;font-size:22px;color:var(--amarillo);letter-spacing:2px;text-align:center;margin-bottom:14px}
 .lista-opciones{display:flex;flex-direction:column;gap:10px}
@@ -100,10 +121,10 @@ section{min-height:100vh;display:flex;flex-direction:column;justify-content:cent
 .lista-item.bloqueado{opacity:.35;cursor:not-allowed}
 .lista-nota{color:rgba(255,255,255,.4);font-size:12px;text-align:center;margin-top:10px;line-height:1.4}
 
-/* MODALES */
+/* ===== MODALES ===== */
 .modal-overlay{position:fixed;inset:0;background:rgba(0,0,0,.82);z-index:2000;display:none;align-items:center;justify-content:center;padding:20px}
 .modal-overlay.visible{display:flex}
-.modal-box{background:white;border-radius:20px;padding:36px 28px;max-width:360px;width:100%;text-align:center;animation:popIn .4s cubic-bezier(.17,.67,.51,1.4) both;box-shadow:0 30px 80px rgba(0,0,0,.5)}
+.modal-box{background:white;border-radius:20px;padding:36px 28px;max-width:380px;width:100%;text-align:center;animation:popIn .4s cubic-bezier(.17,.67,.51,1.4) both;box-shadow:0 30px 80px rgba(0,0,0,.5)}
 .modal-emoji{font-size:56px;margin-bottom:10px;display:block}
 .modal-titulo{font-family:'Bebas Neue',sans-serif;font-size:12px;letter-spacing:4px;color:#999;text-transform:uppercase;margin-bottom:6px}
 .modal-resultado{font-family:'Bebas Neue',sans-serif;font-size:30px;color:var(--oscuro);line-height:1.1;margin-bottom:6px}
@@ -113,14 +134,24 @@ section{min-height:100vh;display:flex;flex-direction:column;justify-content:cent
 .btn-si:hover{transform:translate(-2px,-2px);box-shadow:6px 6px 0 #3a9944}
 .btn-no{padding:11px 24px;background:#eee;color:#666;font-family:'Nunito',sans-serif;font-weight:900;font-size:15px;border:none;border-radius:8px;cursor:pointer}
 .btn-no:hover{background:#e0e0e0}
-.toast{position:fixed;bottom:20px;left:50%;transform:translateX(-50%) translateY(120px);background:var(--oscuro);color:white;padding:12px 22px;border-radius:10px;font-weight:700;font-size:14px;box-shadow:0 8px 30px rgba(0,0,0,.3);z-index:3000;transition:transform .4s cubic-bezier(.17,.67,.51,1.4);white-space:nowrap;max-width:90vw;text-align:center}
-.toast.visible{transform:translateX(-50%) translateY(0)}
+
+/* ===== NOTIFICACIÓN CENTRAL GRANDE ===== */
+.notif-overlay{position:fixed;inset:0;background:rgba(0,0,0,.75);z-index:3000;display:none;align-items:center;justify-content:center;padding:20px}
+.notif-overlay.visible{display:flex}
+.notif-box{background:white;border-radius:24px;padding:44px 36px;max-width:440px;width:100%;text-align:center;animation:popIn .5s cubic-bezier(.17,.67,.51,1.4) both;box-shadow:0 40px 100px rgba(0,0,0,.6);border:4px solid var(--amarillo)}
+.notif-icon{font-size:80px;display:block;margin-bottom:16px;animation:flotar 2s ease-in-out infinite}
+.notif-titulo{font-family:'Bebas Neue',sans-serif;font-size:32px;color:var(--oscuro);margin-bottom:12px;letter-spacing:2px}
+.notif-mensaje{font-size:16px;color:#555;line-height:1.6;margin-bottom:28px}
+.notif-mensaje strong{color:var(--oscuro)}
+.btn-notif-listo{padding:15px 40px;background:var(--oscuro);color:var(--amarillo);font-family:'Bebas Neue',sans-serif;font-size:24px;letter-spacing:3px;border:none;border-radius:8px;cursor:pointer;box-shadow:6px 6px 0 var(--naranja);transition:transform .1s,box-shadow .1s}
+.btn-notif-listo:hover{transform:translate(-3px,-3px);box-shadow:9px 9px 0 var(--naranja)}
+
 footer{background:var(--oscuro);color:rgba(255,255,255,.5);text-align:center;padding:36px 20px;font-size:14px}
 footer span{color:var(--amarillo);font-weight:700}
 
 @keyframes aparecer{from{opacity:0;transform:translateY(24px)}to{opacity:1;transform:translateY(0)}}
-@keyframes flotar{0%,100%{transform:translateY(0)}50%{transform:translateY(-18px)}}
-@keyframes popIn{from{opacity:0;transform:scale(.7)}to{opacity:1;transform:scale(1)}}
+@keyframes flotar{0%,100%{transform:translateY(0)}50%{transform:translateY(-14px)}}
+@keyframes popIn{from{opacity:0;transform:scale(.6)}to{opacity:1;transform:scale(1)}}
 
 @media(max-width:640px){
   .polaroid{width:128px}
@@ -129,7 +160,9 @@ footer span{color:var(--amarillo);font-weight:700}
   #btn-musica{top:10px;right:10px;padding:7px 13px;font-size:12px}
   .puntero{right:-20px;font-size:28px}
   .cara-t{font-size:13px;padding:16px}
-  .modal-box{padding:28px 18px}
+  .modal-box,.notif-box{padding:28px 18px}
+  .notif-titulo{font-size:24px}
+  .notif-icon{font-size:60px}
   .nombre-grande{font-size:clamp(38px,12vw,90px)}
 }
 @media(min-width:641px) and (max-width:900px){
@@ -156,7 +189,7 @@ footer span{color:var(--amarillo);font-weight:700}
   <div class="dot" onclick="irA(3)"></div>
 </nav>
 
-<!-- S0 PORTADA -->
+<!-- ===== S0: PORTADA ===== -->
 <section id="s0">
   <div class="fondo-sticker" aria-hidden="true">
     <span>🎉</span><span>⭐</span><span>🎊</span><span>✨</span><span>🎈</span><span>🎉</span><span>⭐</span><span>🎊</span>
@@ -168,21 +201,21 @@ footer span{color:var(--amarillo);font-weight:700}
   </div>
   <div class="portada-content">
     <div class="tag-arriba">🎂 Hoy es tu día especial</div>
-    <!-- FOTO DE MONSE: reemplaza "foto-monse.jpg" con tu archivo -->
+    <!-- FOTO DE MONSE: pon foto-monse.jpg en la misma carpeta -->
     <div class="foto-portada-wrap">
-      <img src="foto-monse.jpg" alt="Monse"
-           onerror="this.style.display='none'">
+      <img src="foto-monse.jpg" alt="Monse" onerror="this.style.display='none'">
     </div>
     <h1 class="nombre-grande">¡FELIZ<br>CUMPLEAÑOS<br><span>MONSE!</span></h1>
     <p class="sub-portada">Esto lo hice con mucho cariño para ti 🧡</p>
     <button class="btn-empezar" onclick="irA(1);lanzarConfeti()">Abrir regalo ✨</button>
   </div>
   <div class="globos-deco" aria-hidden="true">
-    <span class="globo">🎈</span><span class="globo">🎊</span><span class="globo">🎉</span><span class="globo">🎊</span><span class="globo">🎈</span>
+    <span class="globo">🎈</span><span class="globo">🎊</span><span class="globo">🎉</span>
+    <span class="globo">🎊</span><span class="globo">🎈</span>
   </div>
 </section>
 
-<!-- S1 FAMILIA -->
+<!-- ===== S1: FAMILIA ===== -->
 <section id="s1">
   <div class="sec-header">
     <div class="sec-tag tag-naranja">📸 Recuerdos</div>
@@ -191,7 +224,6 @@ footer span{color:var(--amarillo);font-weight:700}
   <div class="polaroids-wrap">
     <div class="polaroid" style="--rot:-5deg" onclick="playAudio('aud1',this)">
       <div class="polaroid-audio-indicator">♪</div>
-      <!-- reemplaza src con foto real -->
       <img src="https://via.placeholder.com/150/FFD93D/1a1a2e?text=📷" alt="Mamá">
       <div class="polaroid-label">Mamá 💛</div>
       <audio id="aud1"><!-- <source src="audio-mama.mp3"> --></audio>
@@ -202,8 +234,8 @@ footer span{color:var(--amarillo);font-weight:700}
       <div class="polaroid-label">Papá 🧡</div>
       <audio id="aud2"><!-- <source src="audio-papa.mp3"> --></audio>
     </div>
-    <!-- HERMANA: toca para audio + imagen extra -->
-    <div class="polaroid" style="--rot:-3deg" id="pol-hermana" onclick="playAudio('aud3',this);toggleHermana()">
+    <!-- HERMANA: toca para audio + imagen extra debajo -->
+    <div class="polaroid" style="--rot:-3deg" onclick="playAudio('aud3',this);toggleHermana()">
       <div class="polaroid-audio-indicator">♪</div>
       <img src="https://via.placeholder.com/150/C77DFF/ffffff?text=📷" alt="Hermana">
       <div class="polaroid-label">Hermana 💜</div>
@@ -218,9 +250,9 @@ footer span{color:var(--amarillo);font-weight:700}
   </div>
   <p style="margin-top:18px;color:#aaa;font-size:12px;text-align:center">Toca cada foto para escuchar su mensaje 🔊</p>
 
-  <!-- IMAGEN EXTRA HERMANA (oculta hasta tocar polaroid hermana) -->
+  <!-- IMAGEN EXTRA HERMANA -->
   <div id="hermana-extra">
-    <!-- reemplaza src con la imagen que mandó la hermana -->
+    <!-- reemplaza src con imagen-hermana-extra.jpg -->
     <img src="imagen-hermana-extra.jpg" alt="De tu hermana con amor"
          onerror="this.src='https://via.placeholder.com/420x240/C77DFF/ffffff?text=💜+Imagen+de+tu+hermana'">
     <p>💜 Una imagen especial que te mandó tu hermana</p>
@@ -233,7 +265,7 @@ footer span{color:var(--amarillo);font-weight:700}
   </div>
 </section>
 
-<!-- S2 PERSONAJES -->
+<!-- ===== S2: PERSONAJES ===== -->
 <section id="s2">
   <div class="sec-header">
     <div class="sec-tag tag-lila">💌 Mensajes</div>
@@ -242,7 +274,6 @@ footer span{color:var(--amarillo);font-weight:700}
   </div>
   <div class="personajes-grid">
 
-    <!-- Para agregar imagen al frente descomenta la línea card-img y pon el src -->
     <div class="carta-personaje c1" onclick="abrirCarta(this)">
       <div class="carta-inner">
         <div class="cara-f">
@@ -318,6 +349,26 @@ footer span{color:var(--amarillo);font-weight:700}
       </div>
     </div>
 
+    <!-- CARTA LEGENDARIA #6 -->
+    <div class="carta-personaje c6" onclick="abrirCarta(this)">
+      <div class="carta-inner">
+        <div class="cara-f">
+          <!-- <img class="card-img" src="personaje6.jpg" alt=""> -->
+          <div class="card-overlay" style="background:linear-gradient(to top,rgba(0,0,0,.7) 0%,rgba(180,130,0,.1) 60%)"></div>
+          <div class="card-content">
+            <span class="emoji-big">👑</span>
+            <span class="nombre-carta" style="color:var(--dorado1);text-shadow:0 0 20px rgba(255,215,0,.9),0 2px 8px rgba(0,0,0,.8)">LEGENDARIA</span>
+            <span class="toca" style="background:rgba(255,215,0,.3);color:var(--dorado1);font-weight:900">✨ TOCA PARA LEER ✨</span>
+          </div>
+        </div>
+        <div class="cara-t" style="background:linear-gradient(135deg,#fffbe6,#fff0a0);border:2px solid var(--dorado2)">
+          <span style="font-size:20px">👑</span><br>
+          "Pon aquí el mensaje especial de la carta legendaria para Monse 🌟"
+          <div class="firma">✨👑✨</div>
+        </div>
+      </div>
+    </div>
+
   </div>
   <div class="nav-btns">
     <button class="btn-nav btn-prev" onclick="irA(1)">← Anterior</button>
@@ -325,15 +376,15 @@ footer span{color:var(--amarillo);font-weight:700}
   </div>
 </section>
 
-<!-- S3 RULETA -->
+<!-- ===== S3: RULETA ===== -->
 <section id="s3">
   <div class="sec-header">
     <div class="sec-tag tag-azul" id="s3-tag">🎡 Fase 1 de 2</div>
     <h2 class="sec-titulo" id="s3-titulo">La ruleta decide</h2>
-    <p style="color:rgba(255,255,255,.5);margin-top:8px;font-size:13px" id="s3-sub">Gira 1 vez — si no aceptas tienes 1 intento más</p>
+    <p style="color:rgba(255,255,255,.5);margin-top:8px;font-size:13px" id="s3-sub">Gira 1 vez — si no te convence, tienes 1 intento más y lo que salga esa vez queda</p>
   </div>
 
-  <!-- FASE RULETA -->
+  <!-- FASE 1: RULETA -->
   <div class="fase activa" id="fase-ruleta">
     <div class="ruleta-col">
       <div class="ruleta-container">
@@ -341,17 +392,19 @@ footer span{color:var(--amarillo);font-weight:700}
         <div class="puntero">👉</div>
         <div class="centro-ruleta">🎲</div>
       </div>
-      <p class="ruleta-info" id="ruleta-info">Tienes <strong style="color:var(--amarillo)">1 intento</strong> — si rechazas, tendrás 1 más y lo que salga queda</p>
+      <p class="ruleta-info" id="ruleta-info">
+        Tienes <strong style="color:var(--amarillo)">1 giro</strong> — si rechazas, se te da 1 más pero esa vez queda lo que salga
+      </p>
       <button class="btn-girar" id="btn-girar" onclick="girarRuleta()">¡GIRAR!</button>
     </div>
   </div>
 
-  <!-- FASE LISTA -->
+  <!-- FASE 2: LISTA -->
   <div class="fase" id="fase-lista">
     <div class="lista-col">
       <div class="lista-titulo">Ahora elige tú 🎯</div>
       <div class="lista-opciones" id="lista-opciones"></div>
-      <p class="lista-nota" id="lista-nota">Elige una — si cambias de opinión tienes 1 cambio permitido</p>
+      <p class="lista-nota" id="lista-nota">Elige una — si cambias de opinión tienes 1 cambio y esa es la definitiva</p>
     </div>
   </div>
 
@@ -360,21 +413,21 @@ footer span{color:var(--amarillo);font-weight:700}
   </div>
 </section>
 
-<!-- MODAL: resultado ruleta -->
+<!-- MODAL: resultado ruleta (1er giro) -->
 <div class="modal-overlay" id="m-r1">
   <div class="modal-box">
     <span class="modal-emoji" id="mr1-emoji">🎉</span>
     <div class="modal-titulo">¡La ruleta decidió!</div>
     <div class="modal-resultado" id="mr1-res"></div>
-    <div class="modal-sub" id="mr1-sub">¿Aceptas?</div>
+    <div class="modal-sub" id="mr1-sub"></div>
     <div class="modal-confirmar">
-      <button class="btn-si" onclick="aceptarRuleta()">¡Sí, acepto! 🎊</button>
-      <button class="btn-no" id="btn-rechazar-ruleta" onclick="rechazarRuleta()">Tirar de nuevo…</button>
+      <button class="btn-si" onclick="aceptarRuleta()">¡Me quedo! 🎊</button>
+      <button class="btn-no" id="btn-otro-giro" onclick="rechazarRuleta()">Girar otra vez…</button>
     </div>
   </div>
 </div>
 
-<!-- MODAL: confirmación ruleta -->
+<!-- MODAL: ¿estás segura? (acepta ruleta) -->
 <div class="modal-overlay" id="m-r2">
   <div class="modal-box">
     <span class="modal-emoji">🤔</span>
@@ -388,95 +441,110 @@ footer span{color:var(--amarillo);font-weight:700}
   </div>
 </div>
 
-<!-- MODAL: elección lista -->
+<!-- MODAL: resultado ruleta 2do giro (sin botón de rechazar) -->
+<div class="modal-overlay" id="m-r3">
+  <div class="modal-box">
+    <span class="modal-emoji" id="mr3-emoji">🎰</span>
+    <div class="modal-titulo">¡Segundo giro!</div>
+    <div class="modal-resultado" id="mr3-res"></div>
+    <div class="modal-sub">Esta es tu elección de ruleta — ¡no hay más giros! 😄</div>
+    <div class="modal-confirmar">
+      <button class="btn-si" onclick="confirmarRuleta2()">¡Entendido! ✅</button>
+    </div>
+  </div>
+</div>
+
+<!-- MODAL: elección lista (1ra vez) -->
 <div class="modal-overlay" id="m-l1">
   <div class="modal-box">
     <span class="modal-emoji" id="ml1-emoji">🎯</span>
     <div class="modal-titulo">¡Elegiste!</div>
     <div class="modal-resultado" id="ml1-res"></div>
-    <div class="modal-sub">¿Estás segura?</div>
+    <div class="modal-sub">¿Estás segura de esta?</div>
     <div class="modal-confirmar">
-      <button class="btn-si" onclick="aceptarLista()">¡Sí, esa quiero! 🎊</button>
-      <button class="btn-no" onclick="rechazarLista()">Cambiar…</button>
+      <button class="btn-si" onclick="confirmarListaPrimera()">¡Sí, esa quiero! 🎊</button>
+      <button class="btn-no" onclick="rechazarListaPrimera()">Cambiar…</button>
     </div>
   </div>
 </div>
 
-<!-- MODAL: confirmación lista (2do intento) -->
+<!-- MODAL: confirmación lista final (2da elección) -->
 <div class="modal-overlay" id="m-l2">
   <div class="modal-box">
     <span class="modal-emoji">😏</span>
     <div class="modal-titulo">¡Última oportunidad!</div>
-    <div class="modal-resultado" style="font-size:24px">¿Estás SEGURA segura? 😂</div>
-    <div class="modal-sub">No hay más cambios, ¡esta es la definitiva!</div>
+    <div class="modal-resultado" id="ml2-res" style="font-size:26px"></div>
+    <div class="modal-sub">Esta es tu elección definitiva — ¡no hay más cambios! 😂</div>
     <div class="modal-confirmar">
-      <button class="btn-si" onclick="confirmarListaFinal()">¡SÍ, LO JURO! 🎊</button>
-      <button class="btn-no" onclick="ocultarModal('m-l2')">Cambio de opinión…</button>
+      <button class="btn-si" onclick="confirmarListaFinal()">¡Acepto! ✅</button>
     </div>
   </div>
 </div>
 
-<!-- MODAL FINAL -->
-<div class="modal-overlay" id="m-final">
-  <div class="modal-box">
-    <span class="modal-emoji">🥳</span>
-    <div class="modal-titulo">¡Trato hecho!</div>
-    <div style="margin-bottom:6px;font-family:'Bebas Neue';font-size:14px;color:#aaa;letter-spacing:2px">RULETA</div>
-    <div class="modal-resultado" id="mf-ruleta" style="font-size:26px;margin-bottom:12px"></div>
-    <div style="margin-bottom:6px;font-family:'Bebas Neue';font-size:14px;color:#aaa;letter-spacing:2px">LISTA</div>
-    <div class="modal-resultado" id="mf-lista" style="font-size:26px;margin-bottom:16px"></div>
-    <div class="modal-sub">¡Le avisé a quien tiene que saber! 😄</div>
-    <div class="modal-confirmar">
-      <button class="btn-si" onclick="cerrarTodo();lanzarConfeti(true)">¡Yayyy! 🎉</button>
-    </div>
+<!-- NOTIFICACIÓN FINAL GRANDE -->
+<div class="notif-overlay" id="notif-final">
+  <div class="notif-box">
+    <span class="notif-icon">🎉</span>
+    <div class="notif-titulo">¡Trato hecho!</div>
+    <div class="notif-mensaje" id="notif-mensaje"></div>
+    <button class="btn-notif-listo" onclick="cerrarNotifFinal()">¡Listo! 🎊</button>
   </div>
 </div>
-
-<div class="toast" id="toast"></div>
 
 <footer>
-  Hecho con 🧡 para <span>Monse</span> &nbsp;·&nbsp; ¡Que sea un gran año!
+  Hecho con mucho cariño para <span>Monse</span> &nbsp;·&nbsp; Esperando que te guste!
 </footer>
 
 <script src="https://cdn.jsdelivr.net/npm/@emailjs/browser@3/dist/email.min.js"></script>
 <script>
-// ---- EMAILJS ----
-// Variables para la plantilla en emailjs.com:
-// {{opcion_ruleta}}  → lo que salió en la ruleta
-// {{opcion_lista}}   → lo que eligió en la lista
-// {{resumen}}        → resumen completo
-// {{to_email}}       → correo destino
-var EJS = 'service_5vqeehr';
-var EJT = 'template_qp3xcv5';
-var EJP = 'r2PRlY-jUSs7rUcz-';
-try { emailjs.init(EJP); } catch(e){}
+// ======= EMAILJS =======
+// Variables para usar en tu plantilla de emailjs.com:
+//   {{opcion_ruleta}}  → lo que salió en la ruleta
+//   {{opcion_lista}}   → lo que eligió en la lista
+//   {{resumen}}        → resumen completo
+//   {{to_email}}       → correo destino
+var EJS='service_5vqeehr', EJT='template_qp3xcv5', EJP='r2PRlY-jUSs7rUcz-';
+try{emailjs.init(EJP);}catch(e){}
 
-function enviarCorreo(r, l) {
-  try {
-    emailjs.send(EJS, EJT, {
-      to_email:      'mirwanitushar@gmail.com',
-      opcion_ruleta: r || 'No usó la ruleta',
-      opcion_lista:  l || 'No eligió de la lista',
-      resumen:       '🎡 Ruleta: ' + (r||'—') + ' | 🎯 Lista: ' + (l||'—')
-    }).then(function(){ toast('📧 ¡Correo enviado! Ya sé las elecciones 😄'); })
-      .catch(function(){ toast('✅ ¡Elecciones confirmadas!'); });
-  } catch(e){ toast('✅ Todo registrado'); }
+function enviarCorreo(r,l){
+  try{
+    emailjs.send(EJS,EJT,{
+      to_email:'mirwanitushar@gmail.com',
+      opcion_ruleta: r||'No usó la ruleta',
+      opcion_lista:  l||'No eligió de la lista',
+      resumen:'🎡 Ruleta: '+(r||'—')+' | 🎯 Lista: '+(l||'—')
+    }).then(function(){}).catch(function(){});
+  }catch(e){}
 }
 
-// ---- CURSOR ----
+// ======= CURSOR =======
 var cur=document.getElementById('cursor');
 document.addEventListener('mousemove',function(e){cur.style.left=e.clientX+'px';cur.style.top=e.clientY+'px';});
 
-// ---- NAV ----
+// ======= NAV =======
 var secs=document.querySelectorAll('section'),dots=document.querySelectorAll('.dot');
 function irA(n){secs[n].scrollIntoView({behavior:'smooth'});}
-new IntersectionObserver(function(en){en.forEach(function(e){if(e.isIntersecting){var i=Array.from(secs).indexOf(e.target);dots.forEach(function(d){d.classList.remove('active');});if(dots[i])dots[i].classList.add('active');}});},{threshold:.4}).observe&&secs.forEach(function(s){new IntersectionObserver(function(en){en.forEach(function(e){if(e.isIntersecting){var i=Array.from(secs).indexOf(e.target);dots.forEach(function(d){d.classList.remove('active');});if(dots[i])dots[i].classList.add('active');}});},{threshold:.4}).observe(s);});
+secs.forEach(function(s){
+  new IntersectionObserver(function(en){
+    en.forEach(function(e){
+      if(e.isIntersecting){
+        var i=Array.from(secs).indexOf(e.target);
+        dots.forEach(function(d){d.classList.remove('active');});
+        if(dots[i])dots[i].classList.add('active');
+      }
+    });
+  },{threshold:.4}).observe(s);
+});
 
-// ---- MÚSICA ----
+// ======= MÚSICA =======
 var mu=document.getElementById('bgmusic'),mup=false;
-function toggleMusica(){if(mup){mu.pause();document.getElementById('icon-musica').textContent='▶';}else{mu.play().catch(function(){});document.getElementById('icon-musica').textContent='⏸';}mup=!mup;}
+function toggleMusica(){
+  if(mup){mu.pause();document.getElementById('icon-musica').textContent='▶';}
+  else{mu.play().catch(function(){});document.getElementById('icon-musica').textContent='⏸';}
+  mup=!mup;
+}
 
-// ---- AUDIOS POLAROID ----
+// ======= AUDIOS POLAROID =======
 function playAudio(id,el){
   document.querySelectorAll('.polaroid').forEach(function(p){p.classList.remove('playing');});
   document.querySelectorAll('audio:not(#bgmusic)').forEach(function(a){a.pause();a.currentTime=0;});
@@ -484,7 +552,7 @@ function playAudio(id,el){
   if(a&&a.children.length>0){a.play().catch(function(){});el.classList.add('playing');}
 }
 
-// ---- HERMANA EXTRA ----
+// ======= HERMANA EXTRA =======
 var hermVis=false;
 function toggleHermana(){
   hermVis=!hermVis;
@@ -493,20 +561,36 @@ function toggleHermana(){
   if(hermVis)setTimeout(function(){el.scrollIntoView({behavior:'smooth',block:'nearest'});},120);
 }
 
-// ---- CARTAS ----
+// ======= CARTAS =======
 function abrirCarta(el){el.classList.toggle('abierta');}
 
-// ---- CONFETI ----
+// ======= CONFETI =======
 var cc=document.getElementById('confeti-canvas'),cctx=cc.getContext('2d'),pz=[],an=false;
 cc.width=window.innerWidth;cc.height=window.innerHeight;
 window.addEventListener('resize',function(){cc.width=window.innerWidth;cc.height=window.innerHeight;});
-var cls=['#FFD93D','#FF6B35','#6BCB77','#4D96FF','#C77DFF','#FF6B6B','#fff'];
-function cp(){return{x:Math.random()*cc.width,y:-10,w:Math.random()*10+5,h:Math.random()*6+3,color:cls[Math.floor(Math.random()*cls.length)],rot:Math.random()*Math.PI*2,vx:(Math.random()-.5)*4,vy:Math.random()*4+2,vr:(Math.random()-.5)*.15,alpha:1};}
-function lanzarConfeti(b){var n=b?220:100;for(var i=0;i<n;i++)(function(){setTimeout(function(){pz.push(cp());},Math.random()*800);})();if(!an)anim();}
-function anim(){an=true;cctx.clearRect(0,0,cc.width,cc.height);pz=pz.filter(function(p){return p.alpha>.01;});pz.forEach(function(p){p.x+=p.vx;p.y+=p.vy;p.rot+=p.vr;if(p.y>cc.height*.7)p.alpha-=.015;cctx.save();cctx.globalAlpha=p.alpha;cctx.translate(p.x,p.y);cctx.rotate(p.rot);cctx.fillStyle=p.color;cctx.fillRect(-p.w/2,-p.h/2,p.w,p.h);cctx.restore();});if(pz.length>0)requestAnimationFrame(anim);else an=false;}
+var cls=['#FFD93D','#FF6B35','#6BCB77','#4D96FF','#C77DFF','#FF6B6B','#fff','#FFD700'];
+function cp(){return{x:Math.random()*cc.width,y:-10,w:Math.random()*10+5,h:Math.random()*6+3,
+  color:cls[Math.floor(Math.random()*cls.length)],rot:Math.random()*Math.PI*2,
+  vx:(Math.random()-.5)*4,vy:Math.random()*4+2,vr:(Math.random()-.5)*.15,alpha:1};}
+function lanzarConfeti(b){
+  var n=b?250:100;
+  for(var i=0;i<n;i++)(function(){setTimeout(function(){pz.push(cp());},Math.random()*900);})();
+  if(!an)animConf();
+}
+function animConf(){
+  an=true;cctx.clearRect(0,0,cc.width,cc.height);
+  pz=pz.filter(function(p){return p.alpha>.01;});
+  pz.forEach(function(p){
+    p.x+=p.vx;p.y+=p.vy;p.rot+=p.vr;
+    if(p.y>cc.height*.7)p.alpha-=.015;
+    cctx.save();cctx.globalAlpha=p.alpha;cctx.translate(p.x,p.y);cctx.rotate(p.rot);
+    cctx.fillStyle=p.color;cctx.fillRect(-p.w/2,-p.h/2,p.w,p.h);cctx.restore();
+  });
+  if(pz.length>0)requestAnimationFrame(animConf);else an=false;
+}
 lanzarConfeti();
 
-// ---- OPCIONES ----
+// ======= OPCIONES =======
 var OPS=[
   {t:'Cena tú eliges 🍽️',e:'🍽️'},
   {t:'Karaoke noche 🎤',e:'🎤'},
@@ -517,20 +601,54 @@ var OPS=[
 ];
 var RCOLS=['#FF6B35','#C77DFF','#4D96FF','#FFD93D','#6BCB77','#FF6B6B'];
 
-// ---- ESTADO ----
-var resR=null,resL=null,intentosR=0,cambiosL=0,idxL=null,pendR=null,pendL=null,doneR=false,doneL=false;
+// ======= ESTADO =======
+var resR=null,   // resultado confirmado ruleta
+    resL=null,   // resultado confirmado lista
+    intentosR=0, // cuántos giros hizo
+    pendR=null,  // resultado pendiente de confirmar
+    pendL=null,  // elección lista pendiente
+    idxLActual=null, // índice actualmente seleccionado en lista
+    cambioUsado=false, // si ya usó el 1 cambio de lista
+    doneR=false, // ruleta finalizada
+    doneL=false; // lista finalizada
 
-// ---- LISTA ----
+// ======= CONSTRUIR LISTA =======
 var listaEl=document.getElementById('lista-opciones');
 OPS.forEach(function(op,i){
-  var b=document.createElement('button');b.className='lista-item';b.dataset.idx=i;
-  b.textContent=op.e+' '+op.t;b.onclick=function(){elegirLista(i,b);};listaEl.appendChild(b);
+  var b=document.createElement('button');
+  b.className='lista-item';b.dataset.idx=i;
+  b.textContent=op.e+' '+op.t;
+  b.onclick=function(){elegirLista(i,b);};
+  listaEl.appendChild(b);
 });
 
+// ======= LÓGICA LISTA =======
 function elegirLista(idx,btn){
-  if(doneL||btn.classList.contains('bloqueado'))return;
-  if(idxL!==null&&idxL!==idx&&cambiosL>=1){toast('⛔ Ya usaste tu cambio — esa es tu elección final');return;}
-  idxL=idx;pendL=OPS[idx].t;
+  if(doneL)return;
+  if(btn.classList.contains('bloqueado'))return;
+
+  // Si ya tenía una selección diferente y quiere cambiar
+  if(idxLActual!==null && idxLActual!==idx){
+    if(cambioUsado){
+      // Ya usó el cambio, no puede
+      showToast('⛔ Ya usaste tu cambio — esa es tu elección final');
+      return;
+    }
+    // Marcar cambio y mostrar modal de confirmación final directamente
+    cambioUsado=true;
+    idxLActual=idx;pendL=OPS[idx].t;
+    document.querySelectorAll('.lista-item').forEach(function(b){b.classList.remove('seleccionado');});
+    btn.classList.add('seleccionado');
+    document.getElementById('lista-nota').textContent='Esta es tu elección definitiva 🔒';
+    // Modal confirmación final
+    var em=['🎉','🎊','✨','🥳','🎈','🎁'];
+    document.getElementById('ml2-res').textContent=pendL;
+    mostrarModal('m-l2');
+    return;
+  }
+
+  // Primera elección
+  idxLActual=idx;pendL=OPS[idx].t;
   document.querySelectorAll('.lista-item').forEach(function(b){b.classList.remove('seleccionado');});
   btn.classList.add('seleccionado');
   var em=['🎉','🎊','✨','🥳','🎈','🎁'];
@@ -539,125 +657,214 @@ function elegirLista(idx,btn){
   mostrarModal('m-l1');
 }
 
-function aceptarLista(){
+function confirmarListaPrimera(){
+  // Acepta en el primer intento — queda esa
   ocultarModal('m-l1');
-  // primer intento: ¿segura?
-  if(cambiosL===0){setTimeout(function(){mostrarModal('m-l2');},200);}
-  else{confirmarListaFinal();}
+  resL=pendL;doneL=true;
+  bloquearLista();
+  document.getElementById('lista-nota').textContent='✅ ¡Elección registrada!';
+  mostrarFinal();
 }
 
-function rechazarLista(){
+function rechazarListaPrimera(){
+  // No está segura — puede cambiar una vez, la próxima queda
   ocultarModal('m-l1');
-  if(cambiosL>=1){toast('⛔ Ya usaste tu cambio — esa es tu elección final');restaurarListaVisual();return;}
-  cambiosL++;
-  document.getElementById('lista-nota').textContent='Ya usaste tu cambio — la próxima elección es final 🔒';
+  document.getElementById('lista-nota').textContent='Elige otra — esa será la definitiva 🔒';
+  // Desmarcar selección para que pueda elegir otra
   document.querySelectorAll('.lista-item').forEach(function(b){b.classList.remove('seleccionado');});
-  idxL=null;pendL=null;
-}
-
-function restaurarListaVisual(){
-  document.querySelectorAll('.lista-item').forEach(function(b){b.classList.remove('seleccionado');});
-  if(resL){var i=OPS.findIndex(function(o){return o.t===resL;});if(i>=0)document.querySelectorAll('.lista-item')[i].classList.add('seleccionado');}
+  idxLActual=null;pendL=null;
+  // Marcar que el próximo intento es final
+  cambioUsado=false; // permitir el cambio una vez
 }
 
 function confirmarListaFinal(){
-  ocultarModal('m-l2');resL=pendL;doneL=true;
-  document.querySelectorAll('.lista-item').forEach(function(b){b.classList.add('bloqueado');});
+  ocultarModal('m-l2');
+  resL=pendL;doneL=true;
+  bloquearLista();
   document.getElementById('lista-nota').textContent='✅ ¡Elección final registrada!';
   mostrarFinal();
 }
 
-// ---- RULETA CANVAS ----
-var cr=document.getElementById('canvas-ruleta'),crt=cr.getContext('2d'),CX,CY,RA,ang=0;
-
-function ajustarRuleta(){
-  var s=Math.min(window.innerWidth-90,430);cr.width=s;cr.height=s;CX=s/2;CY=s/2;RA=CX-12;dibujar(ang);
+function bloquearLista(){
+  document.querySelectorAll('.lista-item').forEach(function(b){b.classList.add('bloqueado');});
+  // Resaltar la elegida
+  if(idxLActual!==null){
+    var items=document.querySelectorAll('.lista-item');
+    if(items[idxLActual]){
+      items[idxLActual].classList.remove('bloqueado');
+      items[idxLActual].classList.add('seleccionado');
+    }
+  }
 }
 
+// ======= RULETA CANVAS =======
+var cr=document.getElementById('canvas-ruleta'),crt=cr.getContext('2d'),CX,CY,RA,ang=0,gir=false;
+
+function ajustarRuleta(){
+  var s=Math.min(window.innerWidth-90,430);
+  cr.width=s;cr.height=s;CX=s/2;CY=s/2;RA=CX-12;dibujar(ang);
+}
+window.addEventListener('resize',ajustarRuleta);
+ajustarRuleta();
+
 function dibujar(a){
-  var n=OPS.length,sl=(Math.PI*2)/n;crt.clearRect(0,0,cr.width,cr.height);
+  var n=OPS.length,sl=(Math.PI*2)/n;
+  crt.clearRect(0,0,cr.width,cr.height);
   OPS.forEach(function(op,i){
     var ini=a+i*sl,fin=ini+sl;
     crt.beginPath();crt.moveTo(CX,CY);crt.arc(CX,CY,RA,ini,fin);crt.closePath();
-    crt.fillStyle=RCOLS[i];crt.fill();crt.strokeStyle='white';crt.lineWidth=3;crt.stroke();
-    crt.save();crt.translate(CX,CY);crt.rotate(ini+sl/2);crt.textAlign='right';crt.fillStyle='white';
-    var fs=Math.max(12,Math.floor(RA/13));crt.font='bold '+fs+'px Nunito,sans-serif';
+    crt.fillStyle=RCOLS[i];crt.fill();
+    crt.strokeStyle='white';crt.lineWidth=3;crt.stroke();
+    crt.save();crt.translate(CX,CY);crt.rotate(ini+sl/2);
+    crt.textAlign='right';crt.fillStyle='white';
+    var fs=Math.max(12,Math.floor(RA/13));
+    crt.font='bold '+fs+'px Nunito,sans-serif';
     crt.shadowColor='rgba(0,0,0,.5)';crt.shadowBlur=4;
-    var ws=op.t.split(' '),mid=Math.ceil(ws.length/2),l1=ws.slice(0,mid).join(' '),l2=ws.slice(mid).join(' '),lh=fs+4;
+    var ws=op.t.split(' '),mid=Math.ceil(ws.length/2);
+    var l1=ws.slice(0,mid).join(' '),l2=ws.slice(mid).join(' '),lh=fs+4;
     if(l2){crt.fillText(l1,RA-14,-lh/2+2);crt.fillText(l2,RA-14,lh/2+2);}
     else{crt.fillText(l1,RA-14,4);}
     crt.restore();
   });
 }
 
-window.addEventListener('resize',ajustarRuleta);ajustarRuleta();
-
-var gir=false;
 function girarRuleta(){
   if(gir||doneR)return;
-  if(intentosR>=2){toast('⛔ Ya usaste tus 2 intentos');return;}
-  gir=true;document.getElementById('btn-girar').disabled=true;
-  var vt=(Math.floor(Math.random()*5)+6)*Math.PI*2,ex=Math.random()*Math.PI*2,tot=vt+ex,dur=4500,t0=performance.now(),a0=ang;
-  function fr(now){var t=Math.min((now-t0)/dur,1),e=1-Math.pow(1-t,4);ang=a0+tot*e;dibujar(ang);if(t<1)requestAnimationFrame(fr);else{gir=false;intentosR++;calcRes();}}
+  gir=true;
+  document.getElementById('btn-girar').disabled=true;
+  var vt=(Math.floor(Math.random()*5)+6)*Math.PI*2,ex=Math.random()*Math.PI*2,tot=vt+ex;
+  var dur=4500,t0=performance.now(),a0=ang;
+  function fr(now){
+    var t=Math.min((now-t0)/dur,1),e=1-Math.pow(1-t,4);
+    ang=a0+tot*e;dibujar(ang);
+    if(t<1)requestAnimationFrame(fr);
+    else{gir=false;intentosR++;calcResRuleta();}
+  }
   requestAnimationFrame(fr);
 }
 
-function calcRes(){
-  var n=OPS.length,sl=(Math.PI*2)/n,aj=((-ang)%(Math.PI*2)+Math.PI*2)%(Math.PI*2),idx=Math.floor(aj/sl)%n;
+function calcResRuleta(){
+  var n=OPS.length,sl=(Math.PI*2)/n;
+  var aj=((-ang)%(Math.PI*2)+Math.PI*2)%(Math.PI*2);
+  var idx=Math.floor(aj/sl)%n;
   pendR=OPS[idx].t;
   var em=['🎉','🎊','✨','🥳','🎈','🎁'];
-  document.getElementById('mr1-emoji').textContent=em[idx]||'🎉';
-  document.getElementById('mr1-res').textContent=pendR;
-  // si es 2do intento, no se puede rechazar
-  if(intentosR>=2){
-    document.getElementById('mr1-sub').textContent='¡Este es tu resultado final de la ruleta!';
-    document.getElementById('btn-rechazar-ruleta').style.display='none';
+
+  if(intentosR===1){
+    // Primer giro: puede aceptar o girar otra vez
+    document.getElementById('mr1-emoji').textContent=em[idx]||'🎉';
+    document.getElementById('mr1-res').textContent=pendR;
+    document.getElementById('mr1-sub').textContent='¿Te quedas con esto? Si rechazas, tienes 1 giro más y lo que salga queda 👀';
+    mostrarModal('m-r1');
   } else {
-    document.getElementById('mr1-sub').textContent='¿Aceptas? (si rechazas tendrás 1 intento más y queda lo que salga)';
-    document.getElementById('btn-rechazar-ruleta').style.display='';
+    // Segundo giro: queda sí o sí
+    document.getElementById('mr3-emoji').textContent=em[idx]||'🎰';
+    document.getElementById('mr3-res').textContent=pendR;
+    mostrarModal('m-r3');
   }
-  mostrarModal('m-r1');
 }
 
-function aceptarRuleta(){ocultarModal('m-r1');setTimeout(function(){mostrarModal('m-r2');},200);}
+function aceptarRuleta(){
+  ocultarModal('m-r1');
+  setTimeout(function(){mostrarModal('m-r2');},200);
+}
 
 function rechazarRuleta(){
+  // Quiere girar otra vez
   ocultarModal('m-r1');
   document.getElementById('btn-girar').disabled=false;
-  document.getElementById('ruleta-info').innerHTML='<strong style="color:var(--amarillo)">Último intento</strong> — lo que salga esta vez, queda sí o sí 👀';
-  toast('¡Tienes 1 intento más! Lo que salga, queda 👀');
+  document.getElementById('ruleta-info').innerHTML='<strong style="color:var(--amarillo)">Último giro</strong> — lo que salga esta vez es definitivo 🎯';
+  showToast('¡1 giro más! Lo que salga queda 👀');
 }
 
 function confirmarRuleta(){
-  ocultarModal('m-r2');resR=pendR;doneR=true;
+  // Acepta después de "¿estás segura?"
+  ocultarModal('m-r2');
+  resR=pendR;doneR=true;
   document.getElementById('btn-girar').disabled=true;
-  document.getElementById('ruleta-info').textContent='✅ Tu resultado: '+resR;
+  document.getElementById('ruleta-info').textContent='✅ Tu resultado de ruleta: '+resR;
+  document.getElementById('ruleta-info').style.color='var(--amarillo)';
+  setTimeout(pasarALista,1200);
+}
+
+function confirmarRuleta2(){
+  // 2do giro, confirma automáticamente
+  ocultarModal('m-r3');
+  resR=pendR;doneR=true;
+  document.getElementById('btn-girar').disabled=true;
+  document.getElementById('ruleta-info').textContent='✅ Tu resultado de ruleta: '+resR;
   document.getElementById('ruleta-info').style.color='var(--amarillo)';
   setTimeout(pasarALista,1200);
 }
 
 function pasarALista(){
+  // Cambiar header
   document.getElementById('s3-tag').textContent='🎯 Fase 2 de 2';
   document.getElementById('s3-titulo').textContent='Ahora elige tú';
-  document.getElementById('s3-sub').textContent='Escoge una — 1 cambio permitido';
-  document.getElementById('fase-ruleta').classList.remove('activa');
-  document.getElementById('fase-lista').classList.add('activa');
-  document.getElementById('fase-lista').scrollIntoView({behavior:'smooth',block:'nearest'});
+  document.getElementById('s3-sub').textContent='Elige una opción — puedes cambiar 1 vez, pero la 2da elección es final';
+  // Animar transición
+  var fr=document.getElementById('fase-ruleta');
+  fr.style.opacity='1';
+  fr.style.transition='opacity .4s';
+  fr.style.opacity='0';
+  setTimeout(function(){
+    fr.classList.remove('activa');
+    var fl=document.getElementById('fase-lista');
+    fl.classList.add('activa');
+    fl.scrollIntoView({behavior:'smooth',block:'nearest'});
+  },400);
 }
 
+// ======= MOSTRAR FINAL =======
 function mostrarFinal(){
-  if(!doneR)return; // espera a que se pase por la ruleta primero
-  document.getElementById('mf-ruleta').textContent=resR||'—';
-  document.getElementById('mf-lista').textContent=resL||'—';
-  mostrarModal('m-final');
+  // Solo mostrar cuando tengamos resultado de lista (ruleta ya está)
+  if(!doneL)return;
+
+  lanzarConfeti(true);
+
+  var rText=resR||'—';
+  var lText=resL||'—';
+
+  var msg='<strong>Se envió una notificación a tu correo y al de Tushar con los resultados</strong> 📧<br><br>';
+  msg+='🎡 <strong>Ruleta:</strong> '+rText+'<br>';
+  msg+='🎯 <strong>Lista:</strong> '+lText+'<br><br>';
+  msg+='¡Gracias por escoger! 😁';
+
+  document.getElementById('notif-mensaje').innerHTML=msg;
+  mostrarNotifFinal();
   enviarCorreo(resR,resL);
 }
 
-function cerrarTodo(){['m-r1','m-r2','m-l1','m-l2','m-final'].forEach(ocultarModal);}
+// ======= NOTIFICACIÓN FINAL =======
+var notifTimer=null;
+function mostrarNotifFinal(){
+  document.getElementById('notif-final').classList.add('visible');
+  // Auto-cerrar después de 25 segundos
+  notifTimer=setTimeout(function(){cerrarNotifFinal();},25000);
+}
+function cerrarNotifFinal(){
+  if(notifTimer)clearTimeout(notifTimer);
+  document.getElementById('notif-final').classList.remove('visible');
+}
+
+// ======= UTILS =======
 function mostrarModal(id){document.getElementById(id).classList.add('visible');}
 function ocultarModal(id){document.getElementById(id).classList.remove('visible');}
 
-function toast(msg){var t=document.getElementById('toast');t.textContent=msg;t.classList.add('visible');setTimeout(function(){t.classList.remove('visible');},3800);}
+function showToast(msg){
+  // Toast pequeño para mensajes rápidos
+  var existing=document.getElementById('mini-toast');
+  if(!existing){
+    var t=document.createElement('div');
+    t.id='mini-toast';
+    t.style.cssText='position:fixed;bottom:20px;left:50%;transform:translateX(-50%) translateY(120px);background:var(--oscuro);color:white;padding:12px 22px;border-radius:10px;font-weight:700;font-size:14px;box-shadow:0 8px 30px rgba(0,0,0,.3);z-index:3000;transition:transform .4s cubic-bezier(.17,.67,.51,1.4);white-space:nowrap;max-width:90vw;text-align:center;font-family:Nunito,sans-serif';
+    document.body.appendChild(t);
+    existing=t;
+  }
+  existing.textContent=msg;
+  existing.style.transform='translateX(-50%) translateY(0)';
+  setTimeout(function(){existing.style.transform='translateX(-50%) translateY(120px)';},3800);
+}
 </script>
 </body>
 </html>
