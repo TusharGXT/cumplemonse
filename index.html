@@ -123,6 +123,16 @@ section{min-height:100vh;display:flex;flex-direction:column;justify-content:cent
   max-width:1020px;
   width:100%;
 }
+  /* Centrar las 2 últimas tarjetas */
+.card-wrap:nth-child(4){
+  grid-column: 1 / 2;
+  justify-self: end;
+}
+
+.card-wrap:nth-child(5){
+  grid-column: 3 / 4;
+  justify-self: start;
+}
 
 /* CARD WRAPPER */
 .card-wrap{display:flex;flex-direction:column;gap:0}
