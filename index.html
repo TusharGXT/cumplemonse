@@ -116,7 +116,13 @@ section{min-height:100vh;display:flex;flex-direction:column;justify-content:cent
 @keyframes bounceDown{0%{transform:translateY(0)}100%{transform:translateY(5px)}}
 
 /* GRID TARJETAS */
-.personajes-grid{display:grid;grid-template-columns:repeat(3,1fr);gap:24px;max-width:1020px;width:100%}
+.personajes-grid{
+  display:grid;
+  grid-template-columns:repeat(3,1fr);
+  gap:24px;
+  max-width:1020px;
+  width:100%;
+}
 
 /* CARD WRAPPER */
 .card-wrap{display:flex;flex-direction:column;gap:0}
@@ -536,32 +542,7 @@ footer span{color:var(--amarillo);font-weight:700}
       </div>
     </div>
 
-    <!-- TARJETA 6: LEGENDARIA -->
-    <div class="card-wrap c6" id="cw6">
-      <div class="carta-flip">
-        <div class="carta-inner">
-          <div class="cara-f" style="background:linear-gradient(135deg,var(--dorado1),var(--dorado2),var(--dorado3))">
-            <img class="card-img" src="https://tushargxt.github.io/cumplemonse/legendaria.png" alt="Legendaria"
-                 onerror="this.style.display='none'">
-            <div class="card-overlay" style="background:linear-gradient(to top,rgba(0,0,0,.5) 0%,rgba(180,130,0,.05) 55%)"></div>
-          </div>
-          <div class="cara-t">
-            <img class="card-img-back" src="https://tushargxt.github.io/cumplemonse/legendaria.png" alt=""
-                 onerror="this.style.background='linear-gradient(135deg,#3a2a00,#7a5a00)';this.style.display='none'">
-            <div class="back-overlay" style="background:rgba(80,50,0,.6)"></div>
-            <div class="cara-t-scroll">
-              <div class="cara-t-texto" style="color:#FFE88A">
-                👑 "Pon aquí el mensaje especial de la carta legendaria para Monse 🌟"
-              </div>
-            </div>
-          </div>
-        </div>
-      </div>
-      <div class="card-bar">
-        <span class="card-nombre">👑 Legendaria</span>
-        <button class="btn-voltear" onclick="voltearCarta('cw6',this)" style="background:var(--dorado1);box-shadow:3px 3px 0 var(--dorado3)">Dar vuelta ✨</button>
-      </div>
-    </div>
+
 
   </div>
 
