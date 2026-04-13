@@ -54,145 +54,93 @@ section{min-height:100vh;display:flex;flex-direction:column;justify-content:cent
 .tag-verde{background:var(--verde);color:white}.tag-azul{background:var(--azul);color:white}
 .sec-titulo{font-family:'Bebas Neue',sans-serif;font-size:clamp(32px,6vw,58px);color:var(--oscuro);line-height:1}
 
-/* LAYOUT FAMILIA: polaroids + tushar side by side en desktop */
-.familia-layout{
-  display:flex;
-  align-items:flex-start;
-  justify-content:center;
-  gap:50px;
-  width:100%;
-  max-width:1100px;
-  flex-wrap:wrap;
-}
-.familia-izq{
-  display:flex;
-  flex-direction:column;
-  align-items:center;
-  gap:18px;
-  flex:1;
-  min-width:300px;
-}
-.polaroids-wrap{display:flex;gap:18px;flex-wrap:wrap;justify-content:center;max-width:700px}
+/* POLAROIDS — todos en una sola fila centrada */
+.polaroids-wrap{display:flex;gap:18px;flex-wrap:wrap;justify-content:center;max-width:900px;align-items:flex-end}
+
+/* Polaroid normal */
 .polaroid{background:white;padding:10px 10px 46px;border-radius:4px;width:150px;box-shadow:0 8px 28px rgba(0,0,0,.12);transform:rotate(var(--rot));transition:transform .3s cubic-bezier(.17,.67,.51,1.4),box-shadow .3s;cursor:pointer;position:relative;flex-shrink:0}
 .polaroid:hover{transform:rotate(0deg) scale(1.12) translateY(-8px);box-shadow:0 20px 48px rgba(0,0,0,.2);z-index:10}
 .polaroid img{width:100%;aspect-ratio:1;object-fit:cover;display:block;border-radius:2px}
 .polaroid-label{position:absolute;bottom:8px;left:0;right:0;text-align:center;font-weight:700;font-size:12px;color:#444}
 .polaroid-audio-indicator{position:absolute;top:7px;right:7px;background:var(--naranja);color:white;border-radius:50%;width:20px;height:20px;display:flex;align-items:center;justify-content:center;font-size:10px}
 .polaroid.playing{outline:3px solid var(--naranja);outline-offset:3px}
-#hermana-extra{display:none;flex-direction:column;align-items:center;gap:14px;animation:aparecer .5s ease both;max-width:400px;width:100%}
+
+/* Polaroid grande (papás) */
+.polaroid-grande{background:white;padding:12px 12px 52px;border-radius:4px;width:200px;box-shadow:0 10px 34px rgba(0,0,0,.14);transform:rotate(var(--rot));transition:transform .3s cubic-bezier(.17,.67,.51,1.4),box-shadow .3s;cursor:pointer;position:relative;flex-shrink:0}
+.polaroid-grande:hover{transform:rotate(0deg) scale(1.1) translateY(-8px);box-shadow:0 22px 52px rgba(0,0,0,.22);z-index:10}
+.polaroid-grande img{width:100%;aspect-ratio:1;object-fit:cover;display:block;border-radius:2px}
+.polaroid-grande .polaroid-label{position:absolute;bottom:10px;left:0;right:0;text-align:center;font-weight:700;font-size:13px;color:#444}
+.polaroid-grande .polaroid-audio-indicator{position:absolute;top:8px;right:8px;background:var(--naranja);color:white;border-radius:50%;width:22px;height:22px;display:flex;align-items:center;justify-content:center;font-size:11px}
+.polaroid-grande.playing{outline:3px solid var(--naranja);outline-offset:3px}
+
+/* Polaroid Tushar (azul, mismo tamaño normal) */
+.polaroid-tushar{background:white;padding:10px 10px 46px;border-radius:4px;width:150px;box-shadow:0 8px 28px rgba(0,0,0,.12);transform:rotate(var(--rot));transition:transform .3s cubic-bezier(.17,.67,.51,1.4),box-shadow .3s;cursor:pointer;position:relative;flex-shrink:0;border:2px solid var(--azul)}
+.polaroid-tushar:hover{transform:rotate(0deg) scale(1.12) translateY(-8px);box-shadow:0 20px 48px rgba(0,0,0,.2);z-index:10}
+.polaroid-tushar img{width:100%;aspect-ratio:1;object-fit:cover;display:block;border-radius:2px}
+.polaroid-tushar .polaroid-label{position:absolute;bottom:8px;left:0;right:0;text-align:center;font-weight:700;font-size:11px;color:var(--azul)}
+.polaroid-tushar .polaroid-audio-indicator{position:absolute;top:7px;right:7px;background:var(--azul);color:white;border-radius:50%;width:20px;height:20px;display:flex;align-items:center;justify-content:center;font-size:10px}
+.polaroid-tushar.playing{outline:3px solid var(--azul);outline-offset:3px}
+
+/* Extras hermana y tushar */
+#hermana-extra{display:none;flex-direction:column;align-items:center;gap:14px;animation:aparecer .5s ease both;max-width:400px;width:100%;margin-top:8px}
 #hermana-extra img{width:100%;border-radius:14px;box-shadow:0 12px 40px rgba(0,0,0,.15)}
 #hermana-extra p{font-size:13px;color:#888;font-style:italic}
 
-/* TUSHAR — lateral en desktop, abajo en móvil */
-.familia-der{
-  display:flex;
-  flex-direction:column;
-  align-items:center;
-  gap:10px;
+#tushar-extra{display:none;flex-direction:column;align-items:center;gap:12px;animation:aparecer .5s ease both;max-width:360px;width:100%;margin-top:8px}
+
+/* Link Instagram en tushar-extra */
+.ig-link{
+  display:flex;align-items:center;gap:10px;
+  background:linear-gradient(135deg,#833ab4,#fd1d1d,#fcb045);
+  color:white;font-family:'Nunito',sans-serif;font-weight:900;
+  font-size:14px;padding:10px 20px;border-radius:50px;
+  text-decoration:none;
+  box-shadow:0 4px 18px rgba(131,58,180,.35);
+  transition:transform .15s,box-shadow .15s;
   flex-shrink:0;
 }
-.tushar-label{
-  font-family:'Bebas Neue',sans-serif;
-  font-size:20px;
-  color:var(--oscuro);
-  letter-spacing:2px;
-  opacity:.7;
-  text-align:center;
-}
-.tushar-sub{font-size:11px;color:#bbb;text-align:center}
-#tushar-extra{display:none;flex-direction:column;align-items:center;gap:10px;margin-top:10px;animation:aparecer .5s ease both;max-width:300px}
-#tushar-extra img{width:100%;border-radius:10px;box-shadow:0 8px 24px rgba(0,0,0,.15)}
+.ig-link:hover{transform:translateY(-2px);box-shadow:0 8px 24px rgba(131,58,180,.5)}
+.ig-link svg{width:20px;height:20px;fill:white;flex-shrink:0}
+
+#tushar-extra img{width:100%;border-radius:14px;box-shadow:0 12px 40px rgba(0,0,0,.15)}
 #tushar-extra button{font-size:12px;padding:6px 14px}
 
 /* ===== PERSONAJES ===== */
 #s2{background:var(--oscuro);min-height:auto;padding-bottom:80px;padding-top:80px}
 #s2 .sec-titulo{color:white}
-
-/* INDICADOR SCROLL */
 .scroll-indicator{position:fixed;right:46px;top:50%;transform:translateY(-50%);z-index:200;display:none;flex-direction:column;align-items:center;gap:6px;background:rgba(255,255,255,.15);backdrop-filter:blur(8px);border:1px solid rgba(255,255,255,.25);border-radius:40px;padding:12px 10px;color:white;font-size:10px;font-weight:900;letter-spacing:1px;text-align:center;cursor:pointer;transition:opacity .4s}
 .scroll-indicator .si-arrow{font-size:18px;animation:bounceDown .7s ease-in-out infinite alternate}
 .scroll-indicator .si-text{writing-mode:vertical-rl;font-size:9px;opacity:.8;letter-spacing:2px}
 .scroll-indicator.visible{display:flex}
 @keyframes bounceDown{0%{transform:translateY(0)}100%{transform:translateY(5px)}}
 
-/* GRID TARJETAS */
+/* GRID 5 tarjetas: 3 arriba + 2 centradas abajo */
 .personajes-grid{display:grid;grid-template-columns:repeat(3,1fr);gap:24px;max-width:1020px;width:100%}
 
-/* CARD WRAPPER */
-.card-wrap{display:flex;flex-direction:column;gap:0}
 
+.card-wrap{display:flex;flex-direction:column;gap:0}
 .carta-flip{width:100%;aspect-ratio:16/9;perspective:1200px;cursor:pointer}
 .carta-inner{width:100%;height:100%;position:relative;transition:transform .8s cubic-bezier(.4,0,.2,1);transform-style:preserve-3d}
 .card-wrap.abierta .carta-inner{transform:rotateY(180deg)}
-
-/* FRENTE */
 .cara-f{position:absolute;inset:0;border-radius:14px 14px 0 0;backface-visibility:hidden;overflow:hidden}
 .cara-f img.card-img{position:absolute;inset:0;width:100%;height:100%;object-fit:cover;object-position:center center;border-radius:14px 14px 0 0}
 .cara-f .card-overlay{position:absolute;inset:0;background:rgba(0,0,0,.08);border-radius:14px 14px 0 0}
 .cara-f.no-img{background:var(--bg-fallback,#555);display:flex;align-items:center;justify-content:center}
 .cara-f.no-img .emoji-big{font-size:50px;position:relative;z-index:2}
-
-/* TRASERA — imagen de fondo opacada + texto blanco */
-.cara-t{
-  position:absolute;inset:0;
-  border-radius:14px 14px 0 0;
-  backface-visibility:hidden;
-  transform:rotateY(180deg);
-  overflow:hidden;
-  display:flex;align-items:stretch;
-}
-/* imagen de fondo trasera */
-.cara-t img.card-img-back{
-  position:absolute;inset:0;width:100%;height:100%;
-  object-fit:cover;object-position:center center;
-  border-radius:14px 14px 0 0;
-  filter:brightness(.35) saturate(.6);
-}
-/* overlay oscuro adicional para legibilidad */
-.cara-t .back-overlay{
-  position:absolute;inset:0;
-  background:rgba(10,10,30,.55);
-  border-radius:14px 14px 0 0;
-}
-/* contenedor texto scrollable con scrollbar bonita */
-.cara-t-scroll{
-  position:relative;z-index:2;
-  width:100%;
-  overflow-y:auto;
-  padding:16px 18px;
-  /* scrollbar Firefox */
-  scrollbar-width:thin;
-  scrollbar-color:rgba(255,255,255,.4) transparent;
-}
+.cara-t{position:absolute;inset:0;border-radius:14px 14px 0 0;backface-visibility:hidden;transform:rotateY(180deg);overflow:hidden;display:flex;align-items:stretch}
+.cara-t img.card-img-back{position:absolute;inset:0;width:100%;height:100%;object-fit:cover;object-position:center center;border-radius:14px 14px 0 0;filter:brightness(.35) saturate(.6)}
+.cara-t .back-overlay{position:absolute;inset:0;background:rgba(10,10,30,.55);border-radius:14px 14px 0 0}
+.cara-t-scroll{position:relative;z-index:2;width:100%;overflow-y:auto;padding:16px 18px;scrollbar-width:thin;scrollbar-color:rgba(255,255,255,.4) transparent}
 .cara-t-scroll::-webkit-scrollbar{width:4px}
 .cara-t-scroll::-webkit-scrollbar-track{background:transparent}
 .cara-t-scroll::-webkit-scrollbar-thumb{background:rgba(255,255,255,.4);border-radius:4px}
-.cara-t-texto{
-  font-size:clamp(11.5px,1.1vw,13.5px);
-  line-height:1.65;font-weight:600;
-  color:rgba(255,255,255,.95);
-  text-align:left;
-}
+.cara-t-texto{font-size:clamp(11.5px,1.1vw,13.5px);line-height:1.65;font-weight:600;color:rgba(255,255,255,.95);text-align:left}
 .cara-t-texto strong{color:white}
-
-/* BARRA INFERIOR */
 .card-bar{background:rgba(255,255,255,.06);border:1px solid rgba(255,255,255,.12);border-radius:0 0 14px 14px;padding:10px 16px;display:flex;align-items:center;justify-content:space-between;gap:10px}
 .card-nombre{font-family:'Bebas Neue',sans-serif;font-size:clamp(14px,1.8vw,20px);letter-spacing:1.5px;color:white;line-height:1;flex:1}
 .btn-voltear{padding:6px 14px;background:var(--amarillo);color:var(--oscuro);font-family:'Nunito',sans-serif;font-weight:900;font-size:12px;border:none;border-radius:6px;cursor:pointer;flex-shrink:0;transition:transform .1s,box-shadow .1s;box-shadow:3px 3px 0 var(--naranja);white-space:nowrap}
 .btn-voltear:hover{transform:translate(-1px,-1px);box-shadow:5px 5px 0 var(--naranja)}
-
-.c1{--bg-fallback:#c0314a}.c2{--bg-fallback:#7C3AED}
-.c3{--bg-fallback:#059669}.c4{--bg-fallback:#2563EB}.c5{--bg-fallback:#d97706}
-
-/* LEGENDARIA */
-.c6{position:relative}
-.c6::before{content:'';position:absolute;inset:-3px;border-radius:17px;background:linear-gradient(135deg,#FFD700,#FFF5A0,#FFD700,#FFA500,#FFD700);z-index:0;animation:shimmer 2.5s linear infinite}
-.c6 .carta-flip,.c6 .card-bar{position:relative;z-index:1}
-.c6 .card-bar{background:linear-gradient(135deg,rgba(255,215,0,.2),rgba(255,165,0,.2));border-color:rgba(255,215,0,.4)}
-.c6 .card-nombre{color:var(--dorado1);text-shadow:0 0 12px rgba(255,215,0,.6)}
-.c6 .btn-voltear{background:var(--dorado1);color:var(--oscuro);box-shadow:3px 3px 0 var(--dorado3)}
-.c6 .cara-t{/* usa imagen también */}
-@keyframes shimmer{0%{opacity:.7}50%{opacity:1}100%{opacity:.7}}
+.c1{--bg-fallback:#c0314a}.c2{--bg-fallback:#7C3AED}.c3{--bg-fallback:#059669}.c4{--bg-fallback:#2563EB}.c5{--bg-fallback:#d97706}
 
 /* ===== RULETA ===== */
 #s3{background:var(--oscuro);padding-top:90px}
@@ -243,10 +191,12 @@ footer span{color:var(--amarillo);font-weight:700}
 
 /* ===== RESPONSIVE ===== */
 @media(max-width:768px){
-  .familia-layout{flex-direction:column;align-items:center;gap:40px}
-  .familia-der{width:100%;max-width:300px}
-  .polaroid{width:128px}
+  .polaroid{width:120px}
+  .polaroid-grande{width:160px}
+  .polaroid-tushar{width:120px}
   .personajes-grid{grid-template-columns:1fr;max-width:420px}
+  .card-wrap:nth-child(4){grid-column:auto;margin-left:0}
+  .card-wrap:nth-child(5){grid-column:auto;margin-right:0}
   .scroll-indicator{right:8px;padding:8px 7px}
   .scroll-indicator .si-text{display:none}
   .nav-dots{display:none}
@@ -260,6 +210,8 @@ footer span{color:var(--amarillo);font-weight:700}
 }
 @media(min-width:769px) and (max-width:960px){
   .personajes-grid{grid-template-columns:repeat(2,1fr)}
+  .card-wrap:nth-child(4){grid-column:1/2;margin-left:auto;margin-right:0}
+  .card-wrap:nth-child(5){grid-column:2/3;margin-left:0;margin-right:auto}
   .scroll-indicator{right:10px}
 }
 </style>
@@ -272,7 +224,11 @@ footer span{color:var(--amarillo);font-weight:700}
 <button id="btn-musica" onclick="toggleMusica()">
   <span id="icon-musica">▶</span> Música
 </button>
-<audio id="bgmusic" loop><source src="https://tushargxt.github.io/cumplemonse/taylor.mp3"></audio>
+
+<!-- Música de fondo — volumen controlado por JS (MUSIC_VOLUME abajo) -->
+<audio id="bgmusic" loop>
+  <source src="https://tushargxt.github.io/cumplemonse/taylor.mp3">
+</audio>
 
 <nav class="nav-dots">
   <div class="dot active" onclick="irA(0)"></div>
@@ -281,7 +237,6 @@ footer span{color:var(--amarillo);font-weight:700}
   <div class="dot" onclick="irA(3)"></div>
 </nav>
 
-<!-- INDICADOR SCROLL -->
 <div class="scroll-indicator" id="scroll-indicator" onclick="scrollPersonajes()">
   <span class="si-arrow">▼</span>
   <span class="si-text">MÁS</span>
@@ -320,73 +275,69 @@ footer span{color:var(--amarillo);font-weight:700}
     <h2 class="sec-titulo">Tu gente favorita</h2>
   </div>
 
-  <div class="familia-layout">
+  <!-- Una sola fila con todos: papás (grande) + hermana + Tushar -->
+  <div class="polaroids-wrap">
 
-    <!-- IZQUIERDA: familia -->
-    <div class="familia-izq">
-      <div class="polaroids-wrap">
-        <div class="polaroid" style="--rot:-5deg" onclick="playAudio('aud1',this)">
-          <div class="polaroid-audio-indicator">♪</div>
-          <img src="https://tushargxt.github.io/cumplemonse/papis.png" alt="Mamá"
-               onerror="this.src='https://via.placeholder.com/150/FFD93D/1a1a2e?text=📷'">
-          <div class="polaroid-label">Mamá 💛</div>
-          <audio id="aud1"><source src="https://tushargxt.github.io/cumplemonse/audiopapas.mp3"></audio>
-        </div>
-        <div class="polaroid" style="--rot:4deg" onclick="playAudio('aud2',this)">
-          <div class="polaroid-audio-indicator">♪</div>
-          <img src="https://tushargxt.github.io/cumplemonse/papis.png" alt="Papá"
-               onerror="this.src='https://via.placeholder.com/150/FF6B35/ffffff?text=📷'">
-          <div class="polaroid-label">Papá 🧡</div>
-          <audio id="aud2"><source src="https://tushargxt.github.io/cumplemonse/audiopapas.mp3"></audio>
-        </div>
-        <div class="polaroid" style="--rot:-3deg" onclick="playAudio('aud3',this);toggleHermana()">
-          <div class="polaroid-audio-indicator">♪</div>
-          <img src="https://tushargxt.github.io/cumplemonse/cote.png" alt="Hermana"
-               onerror="this.src='https://via.placeholder.com/150/C77DFF/ffffff?text=📷'">
-          <div class="polaroid-label">Hermana 💜</div>
-          <audio id="aud3"><source src="https://tushargxt.github.io/cumplemonse/cote.mp3"></audio>
-        </div>
-        <div class="polaroid" style="--rot:6deg" onclick="playAudio('aud4',this)">
-          <div class="polaroid-audio-indicator">♪</div>
-          <img src="https://tushargxt.github.io/cumplemonse/chica.png" alt="Amigo peludo"
-               onerror="this.src='https://via.placeholder.com/150/6BCB77/ffffff?text=📷'">
-          <div class="polaroid-label">La Chica 🐶</div>
-          <audio id="aud4"><!-- <source src="audio-perro.mp3"> --></audio>
-        </div>
-      </div>
-
-      <p style="color:#aaa;font-size:12px;text-align:center">Toca cada foto para escuchar el mensaje 🔊</p>
-
-      <!-- IMAGEN EXTRA HERMANA -->
-      <div id="hermana-extra">
-        <img src="https://tushargxt.github.io/cumplemonse/imagenextracote.png" alt="De tu hermana"
-             onerror="this.src='https://via.placeholder.com/420x240/C77DFF/ffffff?text=💜+Imagen+de+tu+hermana'">
-        <p>💜 Una imagen especial que te mandó tu hermana</p>
-        <button class="btn-nav btn-prev" style="margin-top:4px" onclick="toggleHermana()">Cerrar ✕</button>
-      </div>
+    <!-- PAPÁS — polaroid grande unificado -->
+    <div class="polaroid-grande" style="--rot:-4deg" onclick="playAudio('aud1',this)">
+      <div class="polaroid-audio-indicator">♪</div>
+      <img src="https://tushargxt.github.io/cumplemonse/papis.png" alt="Mamá y Papá"
+           onerror="this.src='https://via.placeholder.com/200/FFD93D/1a1a2e?text=📷'">
+      <div class="polaroid-label">Mamá &amp; Papá 💛🧡</div>
+      <audio id="aud1"><source src="https://tushargxt.github.io/cumplemonse/audiopapas.mp3"></audio>
     </div>
 
-    <!-- DERECHA: Tushar el colado — siempre visible -->
-    <div class="familia-der">
-      <div class="tushar-label">— El colado —</div>
-      <div class="polaroid" style="--rot:-2deg;border:2px solid var(--azul);width:140px;flex-shrink:0" onclick="playAudio('aud5',this);toggleTushar()">
-        <div class="polaroid-audio-indicator" style="background:var(--azul)">♪</div>
-        <img src="https://tushargxt.github.io/cumplemonse/tushar.png" alt="El colado"
-             onerror="this.src='https://via.placeholder.com/150/4D96FF/ffffff?text=😅'">
-        <div class="polaroid-label" style="color:var(--azul);font-size:11px">Tushar 😅</div>
-        <audio id="aud5"><!-- <source src="audio-tushar.mp3"> --></audio>
-      </div>
-      <div class="tushar-sub">Toca para escuchar 🔊</div>
-
-      <!-- IMAGEN EXTRA TUSHAR -->
-      <div id="tushar-extra">
-        <img src="https://tushargxt.github.io/cumplemonse/tusharmon.png" alt="Extra del colado"
-             onerror="this.src='https://via.placeholder.com/200x140/4D96FF/ffffff?text=😅'">
-        <p></p>
-        <button class="btn-nav btn-prev" onclick="toggleTushar()">Cerrar ✕</button>
-      </div>
+    <!-- HERMANA -->
+    <div class="polaroid" style="--rot:-3deg" onclick="playAudio('aud3',this);toggleHermana()">
+      <div class="polaroid-audio-indicator">♪</div>
+      <img src="https://tushargxt.github.io/cumplemonse/cote.png" alt="Hermana"
+           onerror="this.src='https://via.placeholder.com/150/C77DFF/ffffff?text=📷'">
+      <div class="polaroid-label">Hermana 💜</div>
+      <audio id="aud3"><source src="https://tushargxt.github.io/cumplemonse/cote.mp3"></audio>
     </div>
 
+    <!-- LA CHICA -->
+    <div class="polaroid" style="--rot:5deg" onclick="playAudio('aud4',this)">
+      <div class="polaroid-audio-indicator">♪</div>
+      <img src="https://tushargxt.github.io/cumplemonse/chica.png" alt="La Chica"
+           onerror="this.src='https://via.placeholder.com/150/6BCB77/ffffff?text=📷'">
+      <div class="polaroid-label">La Chica 🐶</div>
+      <audio id="aud4"><!-- <source src="audio-chica.mp3"> --></audio>
+    </div>
+
+    <!-- TUSHAR — mismo tamaño que los demás, borde azul -->
+    <div class="polaroid-tushar" style="--rot:-2deg" onclick="playAudio('aud5',this);toggleTushar()">
+      <div class="polaroid-audio-indicator">♪</div>
+      <img src="https://tushargxt.github.io/cumplemonse/tushar.png" alt="Tushar"
+           onerror="this.src='https://via.placeholder.com/150/4D96FF/ffffff?text=😅'">
+      <div class="polaroid-label">Tushar 😅</div>
+      <audio id="aud5"><!-- <source src="audio-tushar.mp3"> --></audio>
+    </div>
+
+  </div>
+
+  <p style="color:#aaa;font-size:12px;text-align:center;margin-top:18px">Toca cada foto para escuchar el mensaje 🔊</p>
+
+  <!-- IMAGEN EXTRA HERMANA -->
+  <div id="hermana-extra">
+    <img src="https://tushargxt.github.io/cumplemonse/imagenextracote.png" alt="De tu hermana"
+         onerror="this.src='https://via.placeholder.com/420x240/C77DFF/ffffff?text=💜+Imagen+de+tu+hermana'">
+    <p>💜 Una imagen especial que te mandó tu hermana</p>
+    <button class="btn-nav btn-prev" style="margin-top:4px" onclick="toggleHermana()">Cerrar ✕</button>
+  </div>
+
+  <!-- EXTRA TUSHAR: link Instagram ARRIBA + imagen ABAJO -->
+  <div id="tushar-extra">
+    <!-- Link Instagram — CAMBIA la URL por la del video que encontraste -->
+    <a class="ig-link" href="https://www.instagram.com/p/PON_AQUI_EL_ID_DEL_VIDEO" target="_blank" rel="noopener">
+      <svg viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg">
+        <path d="M12 2.163c3.204 0 3.584.012 4.85.07 3.252.148 4.771 1.691 4.919 4.919.058 1.265.069 1.645.069 4.849 0 3.205-.012 3.584-.069 4.849-.149 3.225-1.664 4.771-4.919 4.919-1.266.058-1.644.07-4.85.07-3.204 0-3.584-.012-4.849-.07-3.26-.149-4.771-1.699-4.919-4.92-.058-1.265-.07-1.644-.07-4.849 0-3.204.013-3.583.07-4.849.149-3.227 1.664-4.771 4.919-4.919 1.266-.057 1.645-.069 4.849-.069zm0-2.163c-3.259 0-3.667.014-4.947.072-4.358.2-6.78 2.618-6.98 6.98-.059 1.281-.073 1.689-.073 4.948 0 3.259.014 3.668.072 4.948.2 4.358 2.618 6.78 6.98 6.98 1.281.058 1.689.072 4.948.072 3.259 0 3.668-.014 4.948-.072 4.354-.2 6.782-2.618 6.979-6.98.059-1.28.073-1.689.073-4.948 0-3.259-.014-3.667-.072-4.947-.196-4.354-2.617-6.78-6.979-6.98-1.281-.059-1.69-.073-4.949-.073zm0 5.838c-3.403 0-6.162 2.759-6.162 6.162s2.759 6.163 6.162 6.163 6.162-2.759 6.162-6.163c0-3.403-2.759-6.162-6.162-6.162zm0 10.162c-2.209 0-4-1.79-4-4 0-2.209 1.791-4 4-4s4 1.791 4 4c0 2.21-1.791 4-4 4zm6.406-11.845c-.796 0-1.441.645-1.441 1.44s.645 1.44 1.441 1.44c.795 0 1.439-.645 1.439-1.44s-.644-1.44-1.439-1.44z"/>
+      </svg>
+      Ver nuestro video 🎬
+    </a>
+    <img src="https://tushargxt.github.io/cumplemonse/tusharmon.png" alt="Extra Tushar"
+         onerror="this.src='https://via.placeholder.com/360x240/4D96FF/ffffff?text=😅'">
+    <button class="btn-nav btn-prev" onclick="toggleTushar()">Cerrar ✕</button>
   </div>
 
   <div class="nav-btns" style="margin-top:40px">
@@ -570,14 +521,13 @@ footer span{color:var(--amarillo);font-weight:700}
   </div>
 </section>
 
-<!-- ===== S3: RULETA (3 giros, sin lista fija) ===== -->
+<!-- ===== S3: RULETA ===== -->
 <section id="s3">
   <div class="sec-header">
     <div class="sec-tag tag-azul" id="s3-tag">🎡 Ruleta del destino</div>
     <h2 class="sec-titulo" id="s3-titulo">¿Qué hacemos?</h2>
     <p style="color:rgba(255,255,255,.5);margin-top:8px;font-size:13px" id="s3-sub">Tienes hasta 3 giros — el tercero es el definitivo 🎯</p>
   </div>
-
   <div class="fase activa" id="fase-ruleta">
     <div class="ruleta-col">
       <div class="ruleta-container">
@@ -591,14 +541,12 @@ footer span{color:var(--amarillo);font-weight:700}
       <button class="btn-girar" id="btn-girar" onclick="girarRuleta()">¡GIRAR!</button>
     </div>
   </div>
-
   <div class="nav-btns" style="margin-top:36px">
     <button class="btn-nav btn-prev" onclick="irA(2)">← Anterior</button>
   </div>
 </section>
 
 <!-- MODALES RULETA -->
-<!-- Giro 1 y 2: puede aceptar o tirar de nuevo -->
 <div class="modal-overlay" id="m-r1">
   <div class="modal-box">
     <span class="modal-emoji" id="mr1-emoji">🎉</span>
@@ -611,8 +559,6 @@ footer span{color:var(--amarillo);font-weight:700}
     </div>
   </div>
 </div>
-
-<!-- ¿Estás segura? -->
 <div class="modal-overlay" id="m-r2">
   <div class="modal-box">
     <span class="modal-emoji">🤔</span>
@@ -625,8 +571,6 @@ footer span{color:var(--amarillo);font-weight:700}
     </div>
   </div>
 </div>
-
-<!-- Giro 3: definitivo, sin opción de rechazar -->
 <div class="modal-overlay" id="m-r3">
   <div class="modal-box">
     <span class="modal-emoji" id="mr3-emoji">🎰</span>
@@ -653,6 +597,12 @@ footer span{color:var(--amarillo);font-weight:700}
 
 <script src="https://cdn.jsdelivr.net/npm/@emailjs/browser@3/dist/email.min.js"></script>
 <script>
+// ===== CONFIGURACIÓN DE VOLUMEN =====
+// Cambia este valor entre 0.0 y 1.0 para ajustar el volumen de la música de fondo
+var MUSIC_VOLUME = 0.4;  // 40% — edita este número
+// Volumen reducido mientras suena audio de polaroid (ducking)
+var MUSIC_DUCK_VOLUME = 0.05; // 5% mientras suena un mensaje
+
 // ===== EMAILJS =====
 var EJS='service_5vqeehr',EJT='template_qp3xcv5',EJP='r2PRlY-jUSs7rUcz-';
 try{emailjs.init(EJP);}catch(e){}
@@ -688,20 +638,54 @@ window.addEventListener('scroll',function(){
   si.style.opacity=near?'0':'1';
 });
 
-// ===== MÚSICA =====
+// ===== MÚSICA CON DUCKING =====
 var mu=document.getElementById('bgmusic'),mup=false;
+mu.volume=MUSIC_VOLUME;
+
 function toggleMusica(){
   if(mup){mu.pause();document.getElementById('icon-musica').textContent='▶';}
-  else{mu.play().catch(function(){});document.getElementById('icon-musica').textContent='⏸';}
+  else{mu.volume=MUSIC_VOLUME;mu.play().catch(function(){});document.getElementById('icon-musica').textContent='⏸';}
   mup=!mup;
 }
 
-// ===== AUDIOS =====
+// Bajar/subir volumen suavemente (ducking)
+var duckTimer=null;
+function duckMusic(){
+  if(!mup)return;
+  if(duckTimer){clearTimeout(duckTimer);duckTimer=null;}
+  mu.volume=MUSIC_DUCK_VOLUME;
+}
+function unduckMusic(){
+  if(!mup)return;
+  // Subir gradualmente
+  var target=MUSIC_VOLUME;
+  function step(){
+    if(mu.volume<target-0.02){mu.volume=Math.min(mu.volume+0.02,target);setTimeout(step,60);}
+    else{mu.volume=target;}
+  }
+  step();
+}
+
+// ===== AUDIOS POLAROID CON DUCKING =====
 function playAudio(id,el){
-  document.querySelectorAll('.polaroid').forEach(function(p){p.classList.remove('playing');});
-  document.querySelectorAll('audio:not(#bgmusic)').forEach(function(a){a.pause();a.currentTime=0;});
+  // Detener todos los polaroids primero
+  document.querySelectorAll('.polaroid,.polaroid-grande,.polaroid-tushar').forEach(function(p){p.classList.remove('playing');});
+  document.querySelectorAll('audio:not(#bgmusic)').forEach(function(a){
+    a.pause();a.currentTime=0;
+  });
+
   var a=document.getElementById(id);
-  if(a&&a.children.length>0){a.play().catch(function(){});el.classList.add('playing');}
+  if(a&&a.children.length>0){
+    duckMusic(); // bajar música
+    a.play().catch(function(){unduckMusic();});
+    el.classList.add('playing');
+
+    // Cuando termina el audio, subir música de nuevo
+    a.onended=function(){
+      el.classList.remove('playing');
+      unduckMusic();
+    };
+  }
 }
 
 // ===== HERMANA =====
@@ -726,8 +710,7 @@ function toggleTushar(){
 function voltearCarta(id,btn){
   var wrap=document.getElementById(id);
   var ab=wrap.classList.toggle('abierta');
-  if(id==='cw6'){btn.textContent=ab?'Ver imagen ✨':'Dar vuelta ✨';}
-  else{btn.textContent=ab?'Ver imagen ↩':'Dar vuelta ↩';}
+  btn.textContent=ab?'Ver imagen ↩':'Dar vuelta ↩';
 }
 
 // ===== CONFETI =====
@@ -751,130 +734,26 @@ var OPS=[
 ];
 var RCOLS=['#FF6B35','#C77DFF','#4D96FF','#FFD93D','#6BCB77','#FF6B6B'];
 var MAX_GIROS=3;
-
-// ===== ESTADO RULETA =====
 var resR=null,intentosR=0,pendR=null,doneR=false,gir=false;
 
 // ===== RULETA CANVAS =====
 var cr=document.getElementById('canvas-ruleta'),crt=cr.getContext('2d'),CX,CY,RA,ang=0;
 function ajustarRuleta(){var s=Math.min(window.innerWidth-90,430);cr.width=s;cr.height=s;CX=s/2;CY=s/2;RA=CX-12;dibujar(ang);}
 window.addEventListener('resize',ajustarRuleta);ajustarRuleta();
-function dibujar(a){
-  var n=OPS.length,sl=(Math.PI*2)/n;crt.clearRect(0,0,cr.width,cr.height);
-  OPS.forEach(function(op,i){
-    var ini=a+i*sl,fin=ini+sl;
-    crt.beginPath();crt.moveTo(CX,CY);crt.arc(CX,CY,RA,ini,fin);crt.closePath();
-    crt.fillStyle=RCOLS[i];crt.fill();crt.strokeStyle='white';crt.lineWidth=3;crt.stroke();
-    crt.save();crt.translate(CX,CY);crt.rotate(ini+sl/2);crt.textAlign='right';crt.fillStyle='white';
-    var fs=Math.max(12,Math.floor(RA/13));crt.font='bold '+fs+'px Nunito,sans-serif';
-    crt.shadowColor='rgba(0,0,0,.5)';crt.shadowBlur=4;
-    var ws=op.t.split(' '),mid=Math.ceil(ws.length/2),l1=ws.slice(0,mid).join(' '),l2=ws.slice(mid).join(' '),lh=fs+4;
-    if(l2){crt.fillText(l1,RA-14,-lh/2+2);crt.fillText(l2,RA-14,lh/2+2);}
-    else{crt.fillText(l1,RA-14,4);}
-    crt.restore();
-  });
-}
-
-function girarRuleta(){
-  if(gir||doneR)return;
-  if(intentosR>=MAX_GIROS){showToast('⛔ Ya usaste tus 3 giros');return;}
-  gir=true;document.getElementById('btn-girar').disabled=true;
-  var vt=(Math.floor(Math.random()*5)+6)*Math.PI*2,ex=Math.random()*Math.PI*2,tot=vt+ex;
-  var dur=4500,t0=performance.now(),a0=ang;
-  function fr(now){var t=Math.min((now-t0)/dur,1),e=1-Math.pow(1-t,4);ang=a0+tot*e;dibujar(ang);if(t<1)requestAnimationFrame(fr);else{gir=false;intentosR++;calcResRuleta();}}
-  requestAnimationFrame(fr);
-}
-
-function calcResRuleta(){
-  var n=OPS.length,sl=(Math.PI*2)/n,aj=((-ang)%(Math.PI*2)+Math.PI*2)%(Math.PI*2),idx=Math.floor(aj/sl)%n;
-  pendR=OPS[idx].t;
-  var em=['🎉','🎊','✨','🥳','🎈','🎁'];
-
-  if(intentosR>=MAX_GIROS){
-    // Giro 3: definitivo
-    document.getElementById('mr3-emoji').textContent=em[idx]||'🎰';
-    document.getElementById('mr3-res').textContent=pendR;
-    mostrarModal('m-r3');
-  } else {
-    // Giro 1 o 2: puede aceptar o tirar de nuevo
-    document.getElementById('mr1-emoji').textContent=em[idx]||'🎉';
-    document.getElementById('mr1-res').textContent=pendR;
-    document.getElementById('mr1-titulo').textContent=intentosR===1?'¡Primer giro!':'¡Segundo giro!';
-    var girosRestantes=MAX_GIROS-intentosR;
-    document.getElementById('mr1-sub').textContent='¿Te quedas con esto? Aún tienes '+girosRestantes+' giro'+(girosRestantes>1?'s':'')+(intentosR===2?' (el último)':'')+' disponible'+(girosRestantes>1?'s':'')+' 👀';
-    // Mostrar/ocultar botón de tirar de nuevo
-    document.getElementById('btn-otro-giro').style.display='';
-    mostrarModal('m-r1');
-  }
-  // Actualizar contador en pantalla
-  var gn=document.getElementById('giro-num');
-  if(gn)gn.textContent=Math.min(intentosR+1,MAX_GIROS);
-}
-
-function aceptarRuleta(){
-  ocultarModal('m-r1');
-  setTimeout(function(){mostrarModal('m-r2');},200);
-}
-
-function rechazarRuleta(){
-  ocultarModal('m-r1');
-  if(intentosR>=MAX_GIROS){
-    // No debería llegar aquí, pero por si acaso
-    resR=pendR;doneR=true;mostrarFinal();return;
-  }
-  document.getElementById('btn-girar').disabled=false;
-  var gi=Math.min(intentosR+1,MAX_GIROS);
-  var info=document.getElementById('ruleta-info');
-  var gn=document.getElementById('giro-num');
-  if(gn)gn.textContent=gi;
-  if(intentosR>=MAX_GIROS-1){
-    info.innerHTML='Giro <strong style="color:var(--amarillo)">'+gi+'</strong> de 3 — ¡Este es el <strong style="color:var(--naranja)">definitivo</strong>! 🎯';
-  } else {
-    info.innerHTML='Giro <strong style="color:var(--amarillo)">'+gi+'</strong> de 3 — aún puedes tirar de nuevo';
-  }
-  showToast('¡Giro '+(intentosR+1)+' de 3! '+((MAX_GIROS-intentosR)===1?'Este es el último 🎯':'Puedes tirar de nuevo 👀'));
-}
-
-function confirmarRuleta(){
-  ocultarModal('m-r2');
-  resR=pendR;doneR=true;
-  document.getElementById('btn-girar').disabled=true;
-  document.getElementById('ruleta-info').textContent='✅ Tu resultado: '+resR;
-  document.getElementById('ruleta-info').style.color='var(--amarillo)';
-  setTimeout(mostrarFinal,600);
-}
-
-function confirmarRuletaFinal(){
-  ocultarModal('m-r3');
-  resR=pendR;doneR=true;
-  document.getElementById('btn-girar').disabled=true;
-  document.getElementById('ruleta-info').textContent='✅ Tu resultado final: '+resR;
-  document.getElementById('ruleta-info').style.color='var(--amarillo)';
-  setTimeout(mostrarFinal,600);
-}
-
-// ===== NOTIFICACIÓN FINAL =====
-function mostrarFinal(){
-  lanzarConfeti(true);
-  var msg='<strong>Se envió una notificación a tu correo y al de Tushar con los resultados</strong> 📧<br><br>';
-  msg+='🎡 <strong>Resultado:</strong> '+(resR||'—')+'<br><br>';
-  msg+='¡Gracias por escoger! 😁';
-  document.getElementById('notif-mensaje').innerHTML=msg;
-  mostrarNotifFinal();
-  enviarCorreo(resR);
-}
-
+function dibujar(a){var n=OPS.length,sl=(Math.PI*2)/n;crt.clearRect(0,0,cr.width,cr.height);OPS.forEach(function(op,i){var ini=a+i*sl,fin=ini+sl;crt.beginPath();crt.moveTo(CX,CY);crt.arc(CX,CY,RA,ini,fin);crt.closePath();crt.fillStyle=RCOLS[i];crt.fill();crt.strokeStyle='white';crt.lineWidth=3;crt.stroke();crt.save();crt.translate(CX,CY);crt.rotate(ini+sl/2);crt.textAlign='right';crt.fillStyle='white';var fs=Math.max(12,Math.floor(RA/13));crt.font='bold '+fs+'px Nunito,sans-serif';crt.shadowColor='rgba(0,0,0,.5)';crt.shadowBlur=4;var ws=op.t.split(' '),mid=Math.ceil(ws.length/2),l1=ws.slice(0,mid).join(' '),l2=ws.slice(mid).join(' '),lh=fs+4;if(l2){crt.fillText(l1,RA-14,-lh/2+2);crt.fillText(l2,RA-14,lh/2+2);}else{crt.fillText(l1,RA-14,4);}crt.restore();});}
+function girarRuleta(){if(gir||doneR)return;if(intentosR>=MAX_GIROS){showToast('⛔ Ya usaste tus 3 giros');return;}gir=true;document.getElementById('btn-girar').disabled=true;var vt=(Math.floor(Math.random()*5)+6)*Math.PI*2,ex=Math.random()*Math.PI*2,tot=vt+ex,dur=4500,t0=performance.now(),a0=ang;function fr(now){var t=Math.min((now-t0)/dur,1),e=1-Math.pow(1-t,4);ang=a0+tot*e;dibujar(ang);if(t<1)requestAnimationFrame(fr);else{gir=false;intentosR++;calcResRuleta();}}requestAnimationFrame(fr);}
+function calcResRuleta(){var n=OPS.length,sl=(Math.PI*2)/n,aj=((-ang)%(Math.PI*2)+Math.PI*2)%(Math.PI*2),idx=Math.floor(aj/sl)%n;pendR=OPS[idx].t;var em=['🎉','🎊','✨','🥳','🎈','🎁'];if(intentosR>=MAX_GIROS){document.getElementById('mr3-emoji').textContent=em[idx]||'🎰';document.getElementById('mr3-res').textContent=pendR;mostrarModal('m-r3');}else{document.getElementById('mr1-emoji').textContent=em[idx]||'🎉';document.getElementById('mr1-res').textContent=pendR;document.getElementById('mr1-titulo').textContent=intentosR===1?'¡Primer giro!':'¡Segundo giro!';var gr=MAX_GIROS-intentosR;document.getElementById('mr1-sub').textContent='¿Te quedas con esto? Aún tienes '+gr+' giro'+(gr>1?'s':'')+(intentosR===2?' (el último)':'')+' disponible'+(gr>1?'s':'')+' 👀';document.getElementById('btn-otro-giro').style.display='';mostrarModal('m-r1');}var gn=document.getElementById('giro-num');if(gn)gn.textContent=Math.min(intentosR+1,MAX_GIROS);}
+function aceptarRuleta(){ocultarModal('m-r1');setTimeout(function(){mostrarModal('m-r2');},200);}
+function rechazarRuleta(){ocultarModal('m-r1');if(intentosR>=MAX_GIROS){resR=pendR;doneR=true;mostrarFinal();return;}document.getElementById('btn-girar').disabled=false;var gi=Math.min(intentosR+1,MAX_GIROS);var info=document.getElementById('ruleta-info');var gn=document.getElementById('giro-num');if(gn)gn.textContent=gi;if(intentosR>=MAX_GIROS-1){info.innerHTML='Giro <strong style="color:var(--amarillo)">'+gi+'</strong> de 3 — ¡Este es el <strong style="color:var(--naranja)">definitivo</strong>! 🎯';}else{info.innerHTML='Giro <strong style="color:var(--amarillo)">'+gi+'</strong> de 3 — aún puedes tirar de nuevo';}showToast('¡Giro '+(intentosR+1)+' de 3! '+((MAX_GIROS-intentosR)===1?'Este es el último 🎯':'Puedes tirar de nuevo 👀'));}
+function confirmarRuleta(){ocultarModal('m-r2');resR=pendR;doneR=true;document.getElementById('btn-girar').disabled=true;document.getElementById('ruleta-info').textContent='✅ Tu resultado: '+resR;document.getElementById('ruleta-info').style.color='var(--amarillo)';setTimeout(mostrarFinal,600);}
+function confirmarRuletaFinal(){ocultarModal('m-r3');resR=pendR;doneR=true;document.getElementById('btn-girar').disabled=true;document.getElementById('ruleta-info').textContent='✅ Tu resultado final: '+resR;document.getElementById('ruleta-info').style.color='var(--amarillo)';setTimeout(mostrarFinal,600);}
+function mostrarFinal(){lanzarConfeti(true);var msg='<strong>Se envió una notificación a tu correo y al de Tushar con los resultados</strong> 📧<br><br>🎡 <strong>Resultado:</strong> '+(resR||'—')+'<br><br>¡Gracias por escoger! 😁';document.getElementById('notif-mensaje').innerHTML=msg;mostrarNotifFinal();enviarCorreo(resR);}
 var ntimer=null;
 function mostrarNotifFinal(){document.getElementById('notif-final').classList.add('visible');ntimer=setTimeout(cerrarNotifFinal,25000);}
 function cerrarNotifFinal(){if(ntimer)clearTimeout(ntimer);document.getElementById('notif-final').classList.remove('visible');}
 function mostrarModal(id){document.getElementById(id).classList.add('visible');}
 function ocultarModal(id){document.getElementById(id).classList.remove('visible');}
-function showToast(msg){
-  var t=document.getElementById('_t');
-  if(!t){t=document.createElement('div');t.id='_t';t.style.cssText='position:fixed;bottom:20px;left:50%;transform:translateX(-50%) translateY(120px);background:var(--oscuro);color:white;padding:12px 22px;border-radius:10px;font-weight:700;font-size:14px;box-shadow:0 8px 30px rgba(0,0,0,.3);z-index:4000;transition:transform .4s cubic-bezier(.17,.67,.51,1.4);max-width:90vw;text-align:center;font-family:Nunito,sans-serif';document.body.appendChild(t);}
-  t.textContent=msg;t.style.transform='translateX(-50%) translateY(0)';
-  setTimeout(function(){t.style.transform='translateX(-50%) translateY(120px)';},3800);
-}
+function showToast(msg){var t=document.getElementById('_t');if(!t){t=document.createElement('div');t.id='_t';t.style.cssText='position:fixed;bottom:20px;left:50%;transform:translateX(-50%) translateY(120px);background:var(--oscuro);color:white;padding:12px 22px;border-radius:10px;font-weight:700;font-size:14px;box-shadow:0 8px 30px rgba(0,0,0,.3);z-index:4000;transition:transform .4s cubic-bezier(.17,.67,.51,1.4);max-width:90vw;text-align:center;font-family:Nunito,sans-serif';document.body.appendChild(t);}t.textContent=msg;t.style.transform='translateX(-50%) translateY(0)';setTimeout(function(){t.style.transform='translateX(-50%) translateY(120px)';},3800);}
 </script>
 </body>
 </html>
